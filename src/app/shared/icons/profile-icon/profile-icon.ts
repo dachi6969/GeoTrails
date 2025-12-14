@@ -2,7 +2,7 @@ import { Component, computed, input, output } from '@angular/core';
 import { colors, ColorVariant } from '../../theme/colors';
 
 @Component({
-  selector: 'app-profile-icon',
+  selector: 'profile-icon',
   imports: [],
   templateUrl: './profile-icon.html',
   styleUrl: './profile-icon.css',

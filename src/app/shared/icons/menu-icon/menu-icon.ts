@@ -2,7 +2,7 @@ import { Component, computed, input, output } from '@angular/core';
 import { colors, ColorVariant } from '../../theme/colors'; 
 
 @Component({
-  selector: 'app-menu-icon',
+  selector: 'menu-icon',
   imports: [],
   templateUrl: './menu-icon.html',
   styleUrl: './menu-icon.css',

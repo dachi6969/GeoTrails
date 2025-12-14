@@ -1,0 +1,66 @@
+<ng-template #content>
+    <ng-content />
+  </ng-template>
+  
+  @switch (variant()) {
+    @case ('h1') {
+      <h1
+      [style.color]="currentColor()"
+      >
+        <ng-container *ngTemplateOutlet="content" />
+      </h1>
+    }
+  
+    @case ('h2') {
+      <h2
+      [style.color]="currentColor()"
+      >
+        <ng-container *ngTemplateOutlet="content" />
+      </h2>
+    }
+  
+    @case ('h3') {
+      <h3
+      [style.color]="currentColor()"
+      >
+        <ng-container *ngTemplateOutlet="content" />
+      </h3>
+    }
+    @case ('h4') {
+      <h4
+      [style.color]="currentColor()"
+      >
+        <ng-container *ngTemplateOutlet="content" />
+      </h4>
+    }
+    @case ('h5') {
+      <h5
+      [style.color]="currentColor()"
+      >
+        <ng-container *ngTemplateOutlet="content" />
+      </h5>
+    }
+    @case ('h6') {
+      <h6
+      [style.color]="currentColor()"
+      >
+        <ng-container *ngTemplateOutlet="content" />
+      </h6>
+    }
+    @case ('body2') {
+      <p class="body2"
+      [style.color]="currentColor()"
+      >
+        <ng-container *ngTemplateOutlet="content" />
+      </p>
+    }
+  
+    @default {
+      <p class="body1"
+      [style.color]="currentColor()"
+      >
+        <ng-container *ngTemplateOutlet="content" />
+      </p>
+    }
+  }
+  

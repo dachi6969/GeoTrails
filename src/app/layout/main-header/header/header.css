@@ -20,6 +20,10 @@
     cursor: pointer;
 }
 
+.menu_icon{
+    cursor: pointer;
+}
+
 .header_title {
     display: none;
     position: relative;

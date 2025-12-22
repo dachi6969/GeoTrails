@@ -1,0 +1,21 @@
+<div class="mobile_menu_wrap">
+    <div class="mobile_menu_icons">
+
+        <profile-icon 
+        color="light"
+        [size]="28"
+        />
+
+        <menu-icon 
+        color="light"
+        [size]="28"
+        (onClick)="openMenu()"
+        />
+
+    </div>
+    @if ( isMenuOpen() ) {
+        <app-menu-sidebar 
+        (close)="closeMenu()"
+        />
+    }
+</div>

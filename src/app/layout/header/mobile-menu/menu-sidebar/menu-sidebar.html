@@ -1,0 +1,81 @@
+<div 
+class="mobile_menu_modal"
+(click)="closeMenu()"
+>
+    <div 
+    class="modal_box"
+    (click)="preventClose($event)"
+    >
+        <aside class="mobile_menu_sidebar">
+            <div>
+                <div class="sidebar_header">
+                    <logo-icon 
+                    [size]="50"
+                    />
+                    <exit-icon 
+                    color="light"
+                    [size]="30"
+                    (onClick)="closeMenu()"
+                    />
+                </div>
+                <nav class="sidebar_navigation">
+                    <a class="menu_item" 
+                    routerLink="/home"
+                    (click)="closeMenu()"
+                    >
+                        Home
+                    </a>
+                    <button class="menu_item">
+                        <span>
+                            Tours
+                        </span>
+                        <down-arrow 
+                        color="light"
+                        [size]="19"
+                        />
+                    </button>
+                    <button class="menu_item" (click)="guideSectionToggle()">
+                        <span>
+                            Guides
+                        </span>
+                        @switch (guidesIsOpen()) {
+                            @case (true) {
+                                <up-arrow 
+                                color="light"
+                                [size]="19"
+                                />
+                            }
+    
+                            @case (false) {
+                                <down-arrow 
+                                color="light"
+                                [size]="19"
+                                />
+                            }
+                        }
+                    </button>
+                    @if ( guidesIsOpen() ) {
+                        @for (guide of guides(); track guide) {
+                            <button class="menu_item_guides">
+                                <span>
+                                    {{ guide.name }} {{ guide.lastname }}
+                                </span>
+                                <span class="guides_ratings">
+                                    {{ guide.rating |  ratingStars}}
+                                </span>
+                            </button>    
+                        }
+                    }
+                    <a class="menu_item">
+                        Contacts
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar_footer">
+                <auth-buttons (closeMenu)="closeMenu()"/>
+            </div>
+
+        </aside>
+    </div>
+</div>

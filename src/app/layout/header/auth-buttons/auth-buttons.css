@@ -1,0 +1,10 @@
+
+.login_register_buttons{
+    width: 100%;
+    display: flex;
+    gap: 6px;
+}
+
+ui-button {
+    flex: 1;
+}

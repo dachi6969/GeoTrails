@@ -1,0 +1,63 @@
+[
+    {
+      "id": 1,
+      "name": "Giorgi",
+      "lastname": "Beridze",
+      "rating": 4.9,
+      "experienceYears": 8,
+      "languages": ["Georgian", "English", "Russian"],
+      "specialty": "Mountain hiking",
+      "location": "Kazbegi",
+      "pricePerDay": 120,
+      "available": true
+    },
+    {
+      "id": 2,
+      "name": "Nino",
+      "lastname": "Kapanadze",
+      "rating": 4.8,
+      "experienceYears": 6,
+      "languages": ["Georgian", "English"],
+      "specialty": "Cultural tours",
+      "location": "Tbilisi",
+      "pricePerDay": 100,
+      "available": true
+    },
+    {
+      "id": 3,
+      "name": "Levan",
+      "lastname": "Chkhaidze",
+      "rating": 4.7,
+      "experienceYears": 10,
+      "languages": ["Georgian", "English", "German"],
+      "specialty": "Svaneti trekking",
+      "location": "Mestia",
+      "pricePerDay": 140,
+      "available": false
+    },
+    {
+      "id": 4,
+      "name": "Mariam",
+      "lastname": "Gelashvili",
+      "rating": 4.6,
+      "experienceYears": 5,
+      "languages": ["Georgian", "English"],
+      "specialty": "Wine & countryside tours",
+      "location": "Kakheti",
+      "pricePerDay": 90,
+      "available": true
+    },
+    {
+      "id": 5,
+      "name": "Mirian",
+      "lastname": "Intskirveli",
+      "rating": 5.0,
+      "experienceYears": 12,
+      "languages": ["Georgian", "English", "Italian"],
+      "specialty": "Extreme & off-road tours",
+      "location": "Tusheti",
+      "pricePerDay": 160,
+      "available": true
+    }
+  ]
+  

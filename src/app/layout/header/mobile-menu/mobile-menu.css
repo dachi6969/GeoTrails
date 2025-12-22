@@ -1,0 +1,10 @@
+
+.mobile_menu_icons{
+    display: flex;
+    gap: 6px;
+}
+
+menu-icon, search-icon, profile-icon {
+    cursor: pointer;
+}
+

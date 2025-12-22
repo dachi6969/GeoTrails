@@ -1,0 +1,57 @@
+<nav class="desktop_menu">
+    <a class="menu_item">
+        Profile
+    </a>
+    <div class="menu_group">
+        <button class="tours">   
+            <span>
+                Tours
+            </span>
+            <down-arrow 
+            color="light"
+            [size]="18"
+            style="padding-top: 6px;"
+            />
+        </button>
+        <div class="tours_dropdown">
+            @for (tour of ['ბორჯომი','სვანეთი','ბახმარო','ხევსურეთ']; track tour) {
+                <button class="tour_items">
+                    {{ tour }}
+                </button>
+            }
+        </div>
+    </div>
+    <div class="menu_group">
+        <button class="guides">
+            <span>
+                Guides
+            </span>
+            <down-arrow 
+            color="light"
+            [size]="18"
+            style="padding-top: 6px;"
+            />
+        </button>
+        <div class="guides_dropdown">
+            @for (guide of guides(); track guide) {
+                <button class="guides_items">
+                    <span>
+                        {{ guide.name }}
+                        {{ guide.lastname }}
+                    </span>
+                    <span class="guides_ratings">
+                     {{ guide.rating | ratingStars }}
+                    </span>
+                </button>
+            }
+        </div>
+    </div>
+    <a class="menu_item">   
+        Contacts
+    </a>
+    <a class="menu_item">   
+        Location
+    </a>
+</nav>
+
+

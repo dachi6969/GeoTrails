@@ -1,0 +1,41 @@
+<header class="header">
+    <!-- title section  -->
+    <a class="header_title_wrap" routerLink="/home">
+
+        <logo-icon 
+        class="header_logo"
+        [size]="50"
+        color="light"
+        />
+
+        <ui-typography 
+        class="header_title"
+        variant="h1" 
+        color="light" 
+        #header_title
+        >
+            GeoTrails
+        </ui-typography>
+        
+    </a>
+
+    <!-- nav section(desktops)  -->
+    <div class="desktop_nav_wrap">
+        <app-desktop-menu />
+    </div>
+
+    <!-- menu section  -->
+    <div class="header_menu_wrap">
+        <!-- desktops only  -->
+        <app-header-search />  <!-- search(shared for both) -->
+
+       <div class="auth_buttons_wrap">
+            <auth-buttons />
+       </div>
+
+        <!-- mobiles/tablets only  -->
+        <div class="mobile_menu_wrap">
+            <app-mobile-menu />
+        </div>
+    </div>
+</header>

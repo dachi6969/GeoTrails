@@ -1,7 +1,8 @@
-import { Component, computed, effect, ElementRef, signal, ViewChild } from '@angular/core';
+import { Component, computed, effect, ElementRef, inject, signal, ViewChild } from '@angular/core';
 import { SearchIcon } from "../../../shared/icons/search-icon/search-icon";
 import { LeftArrow } from "../../../shared/icons/arrows/left-arrow/left-arrow";
 import { CommonModule } from '@angular/common';
+import { TourService } from '../../../core/services/tours/tour-service';
 
 
 @Component({
@@ -12,23 +13,30 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderSearch {
 
-  tours = ['borjomi','svaneti','bakhmaro','khevsureti', 'dusheti'];
-
   inputValue = signal('');
   activeBar = signal(0);
 
   searchIsOpen = signal<boolean>(false);
   isSearchMatched = signal<boolean>(false);
 
+  private tourService = inject(TourService);
+  tours = this.tourService.data;
+
+
+  tourTitles = computed(() => {
+    return this.tours()?.map((tour) => tour.title);
+  });
+
+
   searchMatch = computed(() => {
     const value = this.inputValue().toLowerCase().trim();
     if (!value) return null;
   
-    const filtered = this.tours.filter(tour =>
+    const filtered = this.tourTitles()?.filter(tour =>
       tour.toLowerCase().includes(value)
     );
   
-    return filtered.length ? filtered : null;
+    return filtered?.length ? filtered : null;
   });
   
 

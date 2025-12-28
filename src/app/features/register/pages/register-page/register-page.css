@@ -1,0 +1,128 @@
+/* ===== Page container ===== */
+.main {
+    max-width: 1280px;
+
+    padding-top: 30px;
+    margin-inline: auto;
+    padding-inline: 16px;
+  
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  
+  /* ===== Wrapper ===== */
+  .content_wrap {
+    width: 100%;
+    max-width: 350px;
+  
+    display: grid;
+    grid-template-columns: 1fr;
+  
+    /* mobile = flat */
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+  }
+  
+  
+  /* ===== Register form ===== */
+  .register_box {
+    width: 100%;
+    padding: 0;
+  
+    background: transparent;
+  
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+  }
+  
+  /* ===== Titles ===== */
+  .register_title {
+    color: #355f52;
+    text-align: center;
+  }
+  
+  /* ===== Form layout ===== */
+  .register_wrap {
+    width: 100%;
+  }
+  
+
+  
+
+@media (min-width: 481px) and (max-width: 1023px) {
+    .content_wrap {
+        max-width: 500px;
+    
+        background: #ffffff;
+        border-radius: 20px;
+        overflow: hidden;
+    
+        box-shadow:
+          0 12px 30px rgba(15, 61, 46, 0.18),
+          0 4px 12px rgba(15, 61, 46, 0.08);
+      }
+    
+      .content_box {
+        display: none;
+      }
+    
+      .register_box {
+        width: 100%;
+        padding: 32px;
+        background: white;
+      }
+    
+      .register_wrap {
+        width: 70%;
+        margin-inline: auto;
+      }
+  }
+  
+  @media (min-width: 1024px) {
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .submit {
+      grid-column: 1 / -1; 
+      display: flex;
+      justify-content: center;   
+    }
+  
+    .submit_btn {
+      width: 100%;
+    }
+    .content_wrap {
+      max-width: 1000px;
+      grid-template-columns: 1fr 1fr;
+  
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+  
+      box-shadow:
+        0 12px 30px rgba(15, 61, 46, 0.18),
+        0 4px 12px rgba(15, 61, 46, 0.08);
+    }
+  
+  
+    .register_box {
+      padding: 32px;
+      background: white;
+    }
+  
+    .register_wrap {
+      width: 100%;
+      margin-inline: auto;
+    }
+  }
+  

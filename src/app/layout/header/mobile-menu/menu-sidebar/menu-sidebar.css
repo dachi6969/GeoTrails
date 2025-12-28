@@ -88,7 +88,7 @@ exit-icon {
     font-size: 10px;
 }
 
-.menu_item_guides {
+.guides_menu_item, .tours_menu_item {
     all: unset;
 
     padding: 8px 14px 8px 22px;
@@ -113,7 +113,8 @@ exit-icon {
 }
   
 
-.menu_item_guides::before {
+.guides_menu_item::before,
+.tours_menu_item:before {
     content: "";
     position: absolute;
     left: 10px;
@@ -133,7 +134,8 @@ exit-icon {
       background-color: rgba(255, 255, 255, 0.12);
       transform: translateX(4px);
     }
-    .menu_item_guides:hover {
+    .guides_menu_item:hover,
+    .tours_menu_item:hover{
         background-color: rgba(255, 255, 255, 0.12);
         transform: translateX(4px);
         color: white;
@@ -148,12 +150,7 @@ exit-icon {
 
 .sidebar_footer{
     width: 100%;
-    gap: 6px;
-}
-
-.login_button, 
-.register_button{
-    flex: 1;
+    /* background-color: red; */
 }
 
 

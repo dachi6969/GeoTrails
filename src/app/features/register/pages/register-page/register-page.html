@@ -1,5 +1,22 @@
-<main>
-    <h1>
-        this is register page !!
-    </h1>
+<main class="main">
+    <div class="content_wrap">
+
+        <!-- content box  -->       
+       @if ( isDesktop() ) {
+        <content-box />
+       }
+
+        <!-- register box  -->
+        <div class="register_box">
+
+            <h1 class="register_title">
+                Create Account
+            </h1>
+
+            <div class="register_wrap">
+                <reg-box />
+            </div>
+
+        </div>     
+    </div>
 </main>

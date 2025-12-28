@@ -1,4 +1,4 @@
-import { Component, inject, output, signal } from '@angular/core';
+import { Component, computed, inject, output, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DownArrow } from "../../../../shared/icons/arrows/down-arrow/down-arrow";
 import { UpArrow } from "../../../../shared/icons/arrows/up-arrow/up-arrow";
@@ -7,6 +7,7 @@ import { LogoIcon } from "../../../../shared/icons/logo-icon/logo-icon";
 import { GuideService } from '../../../../core/services/guides/guide-service';
 import { RatingStarsPipe } from '../../../../shared/pipes/rating-stars-pipe';
 import { AuthButtons } from "../../auth-buttons/auth-buttons";
+import { TourService } from '../../../../core/services/tours/tour-service';
 
 @Component({
   selector: 'app-menu-sidebar',
@@ -18,12 +19,18 @@ export class MenuSidebar {
 
   close = output();
 
-  guidesIsOpen = signal(false);
+  isGuideSectionOpen = signal<boolean>(false);
+  isTourSectionOpen = signal<boolean>(false);
 
-  guideService = inject(GuideService);
+  private guideService = inject(GuideService);
+  private tourService = inject(TourService);
 
   guides = this.guideService.data;
+  tours = this.tourService.data;
 
+  tourTitles = computed(() => {
+    return this.tours()?.map((tour) => tour.title);
+  });
 
   closeMenu() {
     this.close.emit();
@@ -35,6 +42,9 @@ export class MenuSidebar {
   };
 
   guideSectionToggle() {
-    this.guidesIsOpen.update(prev => !prev);
+    this.isGuideSectionOpen.update(prev => !prev);
   };
+  tourSectionToggle() {
+    this.isTourSectionOpen.update(prev => !prev);
+  }
 }

@@ -1,16 +1,17 @@
 <button
 [class]="size()"
+[class.full]="fullWidth()"
 [disabled]="disabled()"
 (click)="clickHandle()"
 [style.color]="variant() === 'outlined' ? currentColor() : 'white'"
 [style.border]="variant() === 'outlined' ? '1px solid ' + currentColor() : 'none'"
 [style.background]="variant() === 'outlined' ? 'transparent' : currentColor()"
 >
-    <div class="button_content"
+    <span class="button_content"
     [style.visibility]="disabled() ? 'hidden' : 'visible'"
     >
         <ng-content></ng-content>
-    </div>
+    </span>
     @if (disabled()) {
         <div 
         class="spinner"

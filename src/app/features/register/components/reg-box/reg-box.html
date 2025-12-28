@@ -1,0 +1,76 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="input_wrap">
+        <label>Name</label>
+        <auth-input 
+        formControlName="name"
+        placeHolder="Name..."
+        typeAs="text"
+        />
+    </div>
+
+    <div class="input_wrap">
+        <label>Lastname</label>
+        <auth-input 
+        typeAs="text"
+        placeHolder="Lastname..."
+        formControlName="lastname"
+        />
+    </div>
+
+    <div class="input_wrap">
+        <label>Email</label>
+        <auth-input 
+        typeAs="email"
+        placeHolder="Email..."
+        formControlName="email"
+        />
+    </div>
+
+    <div class="input_wrap">
+        <label>Phone</label>
+        <auth-input 
+        typeAs="tel"
+        inputmode="numeric"
+        placeHolder="+995 5XX XX XX XX"
+        formControlName="phone"
+        />
+    </div>
+
+    <div class="input_wrap">
+        <label>Password</label>
+        <auth-input  
+        typeAs="password"
+        placeHolder="Password..."
+        formControlName="password"
+        />
+    </div>
+
+    <div class="input_wrap">
+        <label>Confirm password</label>
+        <auth-input  
+        typeAs="password"
+        placeHolder="Confirm password..."
+        formControlName="confirm"
+        [missMatch]="isMatched()"
+        />
+    </div>
+
+    <div class="input_wrap submit">
+        <button 
+        type="submit"
+        class="submit_btn"
+        >
+            Sign up
+        </button>
+    </div>
+
+</form>
+
+@if ( isRegistered() ) {
+    <successfully-register-modal (onConfirm)="finishRegister()"/>
+}
+
+@if ( registerService.isUnsavedModalOpen() ) {
+    <unsaved-changes-modal />
+}

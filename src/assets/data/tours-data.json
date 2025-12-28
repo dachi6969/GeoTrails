@@ -1,0 +1,36 @@
+[
+    {
+        "id": 1,
+        "title": "Kazbegi",
+        "dayDuration": 1,
+        "category": "mountain",
+        "price": 135,
+        "shortDescription": "Explore the heart of the Caucasus mountains with breathtaking views and ancient history.",
+        "description": "Kazbegi is one of Georgia's most iconic mountain destinations, located along the historic Georgian Military Road. Surrounded by towering Caucasus peaks, the region is best known for the Gergeti Trinity Church, dramatically set against Mount Kazbek. This tour offers stunning alpine views, fresh mountain air, and a journey through scenic gorges and historic landmarks, making it ideal for travelers who want to experience Georgia's mountain beauty in a single, unforgettable day.",
+        "visitorsCount": 2177,
+        "images": {
+            "card": "",
+            "intro": "",
+            "gallery": [
+                ""
+            ]
+        }
+    },
+    {
+        "id": 2,
+        "title": "Svaneti",
+        "dayDuration": 1,
+        "category": "mountain",
+        "price": 175,
+        "shortDescription": "Discover the untouched mountain region of Svaneti, famous for its medieval towers, dramatic landscapes, and remote alpine villages.",
+        "description": "Svaneti is one of Georgia's most breathtaking mountain regions, located high in the Caucasus and known for its ancient defensive towers, deep valleys, and authentic village life. This tour takes you through Mestia and Ushguli — one of the highest permanently inhabited villages in Europe — offering panoramic mountain views, rich cultural heritage, and a rare glimpse into Georgia's untouched alpine traditions. Ideal for travelers seeking nature, history, and true wilderness.",
+        "visitorsCount": 2946,
+        "images": {
+            "card": "",
+            "intro": "",
+            "gallery": [
+                ""
+            ]
+        }
+    }
+]

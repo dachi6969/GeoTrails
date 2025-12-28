@@ -1,0 +1,14 @@
+<div class="input-wrap">
+  <input 
+  [attr.type]="typeAs()"
+  [attr.placeholder]="placeHolder()"
+  [value]="value()"
+  [disabled]="disabled()"
+  (input)="handleChange($event)"
+  (blur)="onBlur()"
+  [class]="errors !== null ? 'error' : ''"
+  />
+  <small>
+      {{ errorMessages }}
+  </small>
+</div>

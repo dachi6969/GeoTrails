@@ -12,6 +12,7 @@ export class UiButton {
   color = input<ColorVariant>('primary');
   variant = input<'outlined' | 'filled'>('filled');
   size = input<'small' | 'medium' | 'big'>('medium');
+  fullWidth = input<boolean>(false);
   disabled = input<boolean>(false);
 
   onClick = output();

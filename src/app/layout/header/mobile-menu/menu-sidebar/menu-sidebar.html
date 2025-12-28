@@ -25,20 +25,11 @@ class="mobile_menu_modal"
                     >
                         Home
                     </a>
-                    <button class="menu_item">
+                    <button class="menu_item" (click)="tourSectionToggle()">
                         <span>
                             Tours
                         </span>
-                        <down-arrow 
-                        color="light"
-                        [size]="19"
-                        />
-                    </button>
-                    <button class="menu_item" (click)="guideSectionToggle()">
-                        <span>
-                            Guides
-                        </span>
-                        @switch (guidesIsOpen()) {
+                        @switch (isTourSectionOpen()) {
                             @case (true) {
                                 <up-arrow 
                                 color="light"
@@ -54,9 +45,38 @@ class="mobile_menu_modal"
                             }
                         }
                     </button>
-                    @if ( guidesIsOpen() ) {
+                    @if ( isTourSectionOpen() ) {
+                        @for (title of tourTitles(); track title) {
+                            <button class="tours_menu_item">
+                                <span>
+                                    {{ title }}
+                                </span>
+                            </button>    
+                        }
+                    }
+                    <button class="menu_item" (click)="guideSectionToggle()">
+                        <span>
+                            Guides
+                        </span>
+                        @switch (isGuideSectionOpen()) {
+                            @case (true) {
+                                <up-arrow 
+                                color="light"
+                                [size]="19"
+                                />
+                            }
+    
+                            @case (false) {
+                                <down-arrow 
+                                color="light"
+                                [size]="19"
+                                />
+                            }
+                        }
+                    </button>
+                    @if ( isGuideSectionOpen() ) {
                         @for (guide of guides(); track guide) {
-                            <button class="menu_item_guides">
+                            <button class="guides_menu_item">
                                 <span>
                                     {{ guide.name }} {{ guide.lastname }}
                                 </span>

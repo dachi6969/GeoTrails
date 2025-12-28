@@ -1,0 +1,39 @@
+<div class="modal-backdrop">
+    <div class="modal-card warning">
+  
+      <div class="icon-wrap warning">
+        !
+      </div>
+  
+      <h2>Leave registration?</h2>
+  
+      <p>
+        You have unsaved changes.<br />
+        If you leave now, your information will be lost.
+      </p>
+  
+      <div class="actions">
+        <ui-button
+        variant="outlined"
+        size="big"
+        color="secondary"
+        [fullWidth]="true"
+        (onClick)="stayOnPage()"
+        >
+          Stay
+        </ui-button>
+  
+        <ui-button
+        variant="outlined"
+        size="big"
+        color="error"
+        [fullWidth]="true"
+        (onClick)="leavePage()"
+        >
+          Leave page
+        </ui-button>
+      </div>
+  
+    </div>
+  </div>
+  

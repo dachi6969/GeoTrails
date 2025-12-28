@@ -3,12 +3,16 @@ button{
     font-weight: bold;
     box-sizing: border-box;
     position: relative;
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
     background: transparent;
     color: white;
     border: transparent;
+    white-space: nowrap;
+}
+
+button.full {
     width: 100%;
 }
 
@@ -37,12 +41,6 @@ button:disabled {
     height: 46px;
     border-radius: 8px;
 }
-
-.button_content_wrap{
-    display: flex;
-    gap: 3px;
-}
-
 
 .spinner {
     position: absolute;

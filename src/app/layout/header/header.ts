@@ -7,6 +7,7 @@ import { MobileMenu } from "./mobile-menu/mobile-menu";
 import { HeaderSearch } from "./header-search/header-search";
 import { AuthButtons } from "./auth-buttons/auth-buttons";
 import { GuideService } from '../../core/services/guides/guide-service';
+import { TourService } from '../../core/services/tours/tour-service';
 
 @Component({
   selector: 'app-header',
@@ -16,10 +17,12 @@ import { GuideService } from '../../core/services/guides/guide-service';
 })
 export class Header implements OnInit{
 
-  guideService = inject(GuideService);
+  private guideService = inject(GuideService);
+  private tourService = inject(TourService);
 
   ngOnInit(): void {
     this.guideService.fetchGuidesData();
+    this.tourService.fetchToursData();
   }
 
 }

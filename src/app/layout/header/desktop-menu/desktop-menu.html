@@ -14,9 +14,9 @@
             />
         </button>
         <div class="tours_dropdown">
-            @for (tour of ['ბორჯომი','სვანეთი','ბახმარო','ხევსურეთ']; track tour) {
+            @for (title of tourTitles(); let i = $index; track i) {
                 <button class="tour_items">
-                    {{ tour }}
+                    {{ title }}
                 </button>
             }
         </div>

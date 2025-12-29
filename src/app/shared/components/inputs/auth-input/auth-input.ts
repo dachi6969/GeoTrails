@@ -52,6 +52,7 @@ export class AuthInput implements ControlValueAccessor {
       this.ngControl.dirty &&
       this.ngControl.invalid
       ) {
+        console.log(this.ngControl.errors)
       return this.ngControl.errors
     }
     if (this.missMatch()) return { missMatch: true }

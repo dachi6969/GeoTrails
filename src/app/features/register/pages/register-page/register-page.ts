@@ -32,7 +32,7 @@ export class RegisterPage {
 
   constructor() {
     inject(BreakpointObserver)
-      .observe(['(min-width: 1023px)'])
+      .observe(['(min-width: 1024px)'])
       .pipe(takeUntilDestroyed())
       .subscribe(result => this.isDesktop.set(result.matches));
   }

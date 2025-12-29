@@ -9,8 +9,8 @@ export const routes: Routes = [
 
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomePage },
-    { path: 'login', component: LoginPage },
-    { path: 'register', component: RegisterPage, canDeactivate: [unsavedLeaveGuard] }, // !CanDeactive guard will be added later!
+    { path: 'login', component: LoginPage, data: {hideHeader: true} },
+    { path: 'register', component: RegisterPage, canDeactivate: [unsavedLeaveGuard] }, 
     { path: 'profile/:username', component: ProfilePage }, // !CanActive + CanDeactive will be added later!
 
 

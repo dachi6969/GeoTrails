@@ -6,5 +6,6 @@ export const errorMsgs: any = {
     invalidNumFormat: 'Invalid format.',
     noNum: 'Must contain at least one number.',
     upperCase: 'Must contain at least one uppercase letter.',
-    infoMatched: (e: any) => `This ${e.fieldName} is already registered.`
+    infoMatched: (e: any) => `This ${e.fieldName} is already registered.`,
+    invalidLogin: 'Invalid email or password. Please try again.',
   }

@@ -1,0 +1,30 @@
+<form class="auth-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="field">
+    <label>Email</label>
+      <auth-input 
+      placeHolder="Enter your email"
+      typeAs="email"
+      formControlName="email" 
+      />
+    </div>
+  
+    <div class="field">
+    <label>Password</label>
+      <auth-input 
+      placeHolder="Enter your password"
+      typeAs="password"
+      formControlName="password" 
+      />
+      <a>
+        Forget password?
+      </a>
+    </div>
+  
+    <button 
+    class="auth-btn" 
+    type="submit"
+    >
+      Log in
+    </button>
+  </form>
+  

@@ -1,27 +1,26 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators, ɵInternalFormsSharedModule } from '@angular/forms';
 import { ValidationService } from '../../../../core/services/validators/validation-service';
 import { AuthInput } from "../../../../shared/components/inputs/auth-input/auth-input";
 import { RegisterService } from '../../services/register-service';
 import { SucessfullyRegisterModal } from "./successfully-register-modal/successfully-register-modal";
 import { UnsavedChangesModal } from "./unsaved-changes-modal/unsaved-changes-modal";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'reg-box',
   imports: [
-    AuthInput, 
-    ɵInternalFormsSharedModule, 
-    ReactiveFormsModule, 
-    SucessfullyRegisterModal, 
-    UnsavedChangesModal
-  ],
+    AuthInput,
+    ɵInternalFormsSharedModule,
+    ReactiveFormsModule,
+    SucessfullyRegisterModal,
+    UnsavedChangesModal,
+    RouterLink
+],
   templateUrl: './reg-box.html',
   styleUrl: './reg-box.css',
 })
 export class RegBox {
-
-  isMatched = signal<boolean>(false);
-  isUserInfoMatched = signal<any>(null);
   
   private validationService = inject(ValidationService);
   registerService = inject(RegisterService);
@@ -36,7 +35,6 @@ export class RegBox {
     ]),
     lastname: new FormControl('', [
       Validators.required,
-
       Validators.minLength(2)
     ]),
     email: new FormControl('', [
@@ -64,23 +62,24 @@ export class RegBox {
     this.isRegistered.set(false);
   }
 
+  isMatched() {
+    const password = this.form.controls.password.value;
+    const confirm = this.form.controls.confirm.value;
+
+    return confirm !== '' ? 
+    confirm !== password : 
+    false
+  }
+
     // *** submit actions ***
   onSubmit() {
-
+    
     this.form.markAllAsTouched();
     this.form.markAllAsDirty();
 
-      // *** compare pass and confirm fields (if they match) ***
-    if (this.form.controls.confirm.value !== '') {
-      this.isMatched.set(
-        this.form.controls.password.value 
-        !==
-        this.form.controls.confirm.value
-        )
-      }
         // *** actions if pass and confirm match or not ***
       if ( this.form.valid && !this.isMatched() ) {
-
+        
         // *** user's new regist data ***
           const userNewInfo = {
             name: this.form.controls.name.value,
@@ -113,8 +112,5 @@ export class RegBox {
               this.registerService.saveInfo();
             }
           }
-          
-        
   };
-  
 }

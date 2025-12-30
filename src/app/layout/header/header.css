@@ -5,12 +5,17 @@
     top: 0;
     right: 0;
     left: 0;
-    background-color: var(--color-header);
-    color: white;
+    color: black;
     padding: 0 16px ;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    transition: background-color 0.3s ease;
+}
+
+.scrolled {
+    background-color: var(--color-header);
 }
 
 .header_title_wrap{
@@ -45,6 +50,11 @@
     /* only for mouse devices  */
 
 @media (hover: hover) and (pointer: fine) {
+
+    .header:hover{
+        background-color: var(--color-header);
+    }
+
     .header_title::after {
         content: "";
         position: absolute;

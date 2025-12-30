@@ -13,7 +13,7 @@ class="mobile_menu_modal"
                     [size]="50"
                     />
                     <exit-icon 
-                    color="light"
+                    color="dark"
                     [size]="30"
                     (onClick)="closeMenu()"
                     />
@@ -32,14 +32,14 @@ class="mobile_menu_modal"
                         @switch (isTourSectionOpen()) {
                             @case (true) {
                                 <up-arrow 
-                                color="light"
+                                color="dark"
                                 [size]="19"
                                 />
                             }
     
                             @case (false) {
                                 <down-arrow 
-                                color="light"
+                                color="dark"
                                 [size]="19"
                                 />
                             }
@@ -61,14 +61,14 @@ class="mobile_menu_modal"
                         @switch (isGuideSectionOpen()) {
                             @case (true) {
                                 <up-arrow 
-                                color="light"
+                                color="dark"
                                 [size]="19"
                                 />
                             }
     
                             @case (false) {
                                 <down-arrow 
-                                color="light"
+                                color="dark"
                                 [size]="19"
                                 />
                             }

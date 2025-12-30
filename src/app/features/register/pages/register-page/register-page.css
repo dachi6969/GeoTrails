@@ -2,7 +2,6 @@
 .main {
     max-width: 1280px;
 
-    padding-top: 30px;
     margin-inline: auto;
     padding-inline: 16px;
   
@@ -17,7 +16,8 @@
   .content_wrap {
     width: 100%;
     max-width: 350px;
-  
+    min-height: 500px;
+
     display: grid;
     grid-template-columns: 1fr;
   
@@ -28,7 +28,6 @@
     overflow: visible;
   }
   
-  
   /* ===== Register form ===== */
   .register_box {
     width: 100%;
@@ -38,6 +37,7 @@
   
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 38px;
   }
   
@@ -56,8 +56,13 @@
   
 
 @media (min-width: 481px) and (max-width: 1024px) {
+
+    .main{
+      padding: 50px;
+    }
+
     .content_wrap {
-        max-width: 500px;
+        min-width: 480px;
     
         background: #ffffff;
         border-radius: 20px;

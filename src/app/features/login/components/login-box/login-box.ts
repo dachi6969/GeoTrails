@@ -56,8 +56,8 @@ export class LoginBox {
         this.form.get('password')?.setErrors({
           invalidLogin: true
         })
-        console.log('ar emtxveva')
-        console.log( this.form.get('email') )
+        // console.log('ar emtxveva')
+        // console.log( this.form.get('email') )
       }
     }
 

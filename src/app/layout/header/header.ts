@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { Typography } from "../../shared/components/typography/typography";
 import { LogoIcon } from "../../shared/icons/logo-icon/logo-icon";
 import { RouterLink } from '@angular/router';
@@ -8,6 +8,7 @@ import { HeaderSearch } from "./header-search/header-search";
 import { AuthButtons } from "./auth-buttons/auth-buttons";
 import { GuideService } from '../../core/services/guides/guide-service';
 import { TourService } from '../../core/services/tours/tour-service';
+import { HeaderService } from './services/header-service';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +20,16 @@ export class Header implements OnInit{
 
   private guideService = inject(GuideService);
   private tourService = inject(TourService);
+  private headerService  = inject(HeaderService);
+
+  isScrolled = this.headerService.isScrolled;
+
+  @HostListener('window:scroll')
+  onScroll() {
+    this.headerService.isScrolled.set(
+      window.scrollY > 20
+    )
+  }
 
   ngOnInit(): void {
     this.guideService.fetchGuidesData();

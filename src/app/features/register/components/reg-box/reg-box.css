@@ -1,7 +1,13 @@
-form {
+.form {
     display: flex;
     flex-direction: column;
     gap: 14px;
+}
+
+.input_wrap{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .submit_btn{
@@ -47,9 +53,32 @@ form {
       0 4px 10px rgba(31, 122, 77, 0.35);
 }
 
+.additional{
+  display: flex;
+  justify-content: center;
+  grid-column: 1/-1;
+  gap: 2px;
+}
+.additional a {
+  color: blue;
+  text-decoration: none;
+}
+
+.back-link {
+  align-self: center;
+  font-size: 14px;
+  color: #5f8f7a;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+
 @media (min-width: 1024px) {
 
-    form {
+    .form {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
@@ -63,4 +92,5 @@ form {
     .submit_btn {
       width: 100%;
     }
+    
 }

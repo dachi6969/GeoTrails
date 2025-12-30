@@ -5,7 +5,7 @@
     left: 0;
     bottom: 0;
     z-index: 9900;
-    background-color: #1f3d2b77;
+    background-color: rgba(0, 0, 0, 0.364);
     display: flex;
     justify-content: flex-end;
 }
@@ -18,8 +18,8 @@ exit-icon {
     width: 300px;
     max-width: 85vw;
   
-    background-color: #1F3D2B; 
-    color: white;
+    background-color: white; 
+    color: black;
   
     padding: 20px 16px;
   
@@ -71,7 +71,7 @@ exit-icon {
     align-items: center;
     justify-content: space-between;
   
-    color: white;
+    color: black;
     font-size: 18px;
     font-weight: 500;
   
@@ -98,7 +98,7 @@ exit-icon {
     align-items: center;
     justify-content: space-between;
   
-    color: rgba(255, 255, 255, 0.9);
+    color: black;
     font-size: 15px;
   
     cursor: pointer;
@@ -125,32 +125,35 @@ exit-icon {
     height: 4px;
     border-radius: 50%;
   
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: white;
 }
+
+/* .guides_menu_item span {
+    color: white;
+} */
   
   /* for mouse devices */
   @media (hover: hover) {
     .menu_item:hover {
-      background-color: rgba(255, 255, 255, 0.12);
+      background-color: black;
+      color: white;
       transform: translateX(4px);
     }
     .guides_menu_item:hover,
     .tours_menu_item:hover{
-        background-color: rgba(255, 255, 255, 0.12);
+        background-color: black;
         transform: translateX(4px);
         color: white;
-      }
-
+      }  
   }
   
   .menu_item.active {
-    background-color: rgba(255, 255, 255, 0.18);
+    background-color: black;
   }
   
 
 .sidebar_footer{
     width: 100%;
-    /* background-color: red; */
 }
 
 

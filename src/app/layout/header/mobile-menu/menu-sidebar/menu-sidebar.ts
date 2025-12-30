@@ -8,10 +8,11 @@ import { GuideService } from '../../../../core/services/guides/guide-service';
 import { RatingStarsPipe } from '../../../../shared/pipes/rating-stars-pipe';
 import { AuthButtons } from "../../auth-buttons/auth-buttons";
 import { TourService } from '../../../../core/services/tours/tour-service';
+import { UiButton } from "../../../../shared/components/buttons/ui-button/ui-button";
 
 @Component({
   selector: 'app-menu-sidebar',
-  imports: [DownArrow, UpArrow, ExitIcon, LogoIcon, RatingStarsPipe, AuthButtons, RouterLink],
+  imports: [DownArrow, UpArrow, ExitIcon, LogoIcon, RatingStarsPipe, RouterLink, AuthButtons],
   templateUrl: './menu-sidebar.html',
   styleUrl: './menu-sidebar.css',
 })

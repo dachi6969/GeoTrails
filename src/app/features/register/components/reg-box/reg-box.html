@@ -1,4 +1,7 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form class="form"
+[formGroup]="form" 
+(ngSubmit)="onSubmit()"
+>
 
     <div class="input_wrap">
         <label>Name</label>
@@ -64,7 +67,17 @@
             Sign up
         </button>
     </div>
-
+    <div class="additional">
+        <p>
+            Already have an account? 
+        </p>
+        <a routerLink="/login"> 
+            Sign in
+        </a>
+    </div>
+    <a routerLink="/" class="back-link">
+        ← Back to home
+    </a>
 </form>
 
 @if ( isRegistered() ) {

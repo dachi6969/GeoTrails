@@ -1,4 +1,5 @@
 import { Injectable, signal } from '@angular/core';
+import { firstValueFrom, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,22 +9,27 @@ export class RegisterService {
   private isUserInfoSaved = signal(false);
   isUnsavedModalOpen = signal<boolean>(false);
 
-  
-  resolver!: (v: boolean) => void;
+  resolver = new Subject<boolean>();
 
-  confirm(): Promise<boolean> | boolean {
-    return new Promise ((resolve) => {
-      this.resolver = resolve;
-      this.openUnsavedModal()
-    })
+  async confirm(){
+    this.openUnsavedModal();
+
+    const p = firstValueFrom(this.resolver);
+
+    const result = await p;
+
+    return result;
   }
 
   stay() {
-    this.resolver(false);
+    this.resolver.next(false);
+    this.resolver = new Subject<boolean>();
   }
   leave() {
-    this.resolver(true);
+    this.resolver.next(true);
+    this.resolver = new Subject<boolean>();
   }
+
   openUnsavedModal() {
     this.isUnsavedModalOpen.set(true);
   }
@@ -67,7 +73,5 @@ export class RegisterService {
   saveInfo() {
     this.isUserInfoSaved.set(true);
   };
-
-
 
 }

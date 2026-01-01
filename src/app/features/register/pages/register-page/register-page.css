@@ -108,7 +108,7 @@
     .content_wrap {
       max-width: 1000px;
       grid-template-columns: 1fr 1fr;
-  
+      
       background: #ffffff;
       border-radius: 20px;
       overflow: hidden;

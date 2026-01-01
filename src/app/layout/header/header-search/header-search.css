@@ -69,7 +69,7 @@ search-icon, left-arrow{
     display: flex;
     flex-direction: column;
     gap: 12px;
-    padding-right: 58px;
+    /* padding-right: 18px; */
     color: white;
   }
 

@@ -1,17 +1,21 @@
-<header [class]="isScrolled() ? 'header scrolled' : 'header' ">
+<header 
+[class]="isScrolled() ? 'header scrolled' : 'header' "
+(mouseenter)="headerOn()"
+(mouseleave)="headerOff()"
+>
     <!-- title section  -->
     <a class="header_title_wrap" routerLink="/home">
 
         <logo-icon 
         class="header_logo"
         [size]="50"
-        color="dark"
+        [color]="colorSwap()"
         />
 
         <ui-typography 
         class="header_title"
         variant="h1" 
-        color="dark" 
+        [color]="colorSwap()" 
         #header_title
         >
             GeoTrails

@@ -10,7 +10,6 @@
   <!-- Mountain -->
   <path
     d="M10 60 L35 25 L50 45 L65 20 L90 60"
-    stroke="currentColor"
     stroke-width="4"
     stroke-linecap="round"
     stroke-linejoin="round"
@@ -24,7 +23,8 @@
     font-size="14"
     font-weight="600"
     letter-spacing="2"
-    fill="currentColor"
+    [attr.stroke]="currentColor()"
+    [attr.fill]="currentColor()"
   >
     GEOTRAILS
   </text>

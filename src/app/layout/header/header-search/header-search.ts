@@ -3,6 +3,7 @@ import { SearchIcon } from "../../../shared/icons/search-icon/search-icon";
 import { LeftArrow } from "../../../shared/icons/arrows/left-arrow/left-arrow";
 import { CommonModule } from '@angular/common';
 import { TourService } from '../../../core/services/tours/tour-service';
+import { HeaderService } from '../services/header-service';
 
 
 @Component({
@@ -20,8 +21,10 @@ export class HeaderSearch {
   isSearchMatched = signal<boolean>(false);
 
   private tourService = inject(TourService);
-  tours = this.tourService.data;
+  private headerService = inject(HeaderService);
 
+  tours = this.tourService.data;
+  colorSwap = this.headerService.colorSwap;
 
   tourTitles = computed(() => {
     return this.tours()?.map((tour) => tour.title);

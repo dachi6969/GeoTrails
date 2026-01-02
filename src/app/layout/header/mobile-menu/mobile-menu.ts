@@ -3,6 +3,7 @@ import { MenuIcon } from "../../../shared/icons/menu-icon/menu-icon";
 import { ProfileIcon } from "../../../shared/icons/profile-icon/profile-icon";
 import { Router } from '@angular/router';
 import { MenuSidebar } from "./menu-sidebar/menu-sidebar";
+import { HeaderService } from '../services/header-service';
 
 @Component({
   selector: 'app-mobile-menu',
@@ -14,7 +15,10 @@ export class MobileMenu {
 
   isMenuOpen = signal<boolean>(false);
 
-  router = inject(Router);
+  private router = inject(Router);
+  private headerService = inject(HeaderService);
+
+  colorSwap = this.headerService.colorSwap;
 
   openMenu() {
     this.isMenuOpen.set(true);

@@ -23,6 +23,8 @@ export class Header implements OnInit{
   private headerService  = inject(HeaderService);
 
   isScrolled = this.headerService.isScrolled;
+  isHeaderShown = this.headerService.isHeaderShown;
+  colorSwap = this.headerService.colorSwap;
 
   @HostListener('window:scroll')
   onScroll() {
@@ -34,6 +36,15 @@ export class Header implements OnInit{
   ngOnInit(): void {
     this.guideService.fetchGuidesData();
     this.tourService.fetchToursData();
+  }
+
+  headerOn() {
+    if ( this.isScrolled() ) return;
+    this.isHeaderShown.set(true);
+  }
+  headerOff() {
+    if ( this.isScrolled() ) return;
+    this.isHeaderShown.set(false);
   }
 
 }

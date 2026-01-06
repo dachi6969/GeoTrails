@@ -1,0 +1,70 @@
+<nav class="desktop_menu">
+    <a class="menu_item"
+    >
+        <ui-typography [color]="colorSwap()"> 
+            Profile
+        </ui-typography>
+    </a>
+    <div class="menu_group">
+        <button class="tours">   
+            <ui-typography
+            [color]="colorSwap()"
+            >
+                Tours
+            </ui-typography>
+            <down-arrow 
+            [color]="colorSwap()"
+            [size]="15"
+            style="padding-top: 6px;"
+            />
+        </button>
+        <div class="tours_dropdown">
+            @for (title of tourTitles(); let i = $index; track i) {
+                <button class="tour_items">
+                    {{ title }}
+                </button>
+            }
+        </div>
+    </div>
+    <div class="menu_group">
+        <button class="guides">
+            <ui-typography
+            [color]="colorSwap()"
+            >
+                Guides
+            </ui-typography>
+            <down-arrow 
+            [color]="colorSwap()"
+            [size]="15"
+            style="padding-top: 6px;"
+            />
+        </button>
+        <div class="guides_dropdown">
+            @for (guide of guides(); track guide) {
+                <button class="guides_items">
+                    <span>
+                        {{ guide.name }}
+                        {{ guide.lastname }}
+                    </span>
+                    <span class="guides_ratings">
+                     {{ guide.rating | ratingStars }}
+                    </span>
+                </button>
+            }
+        </div>
+    </div>
+    <a class="menu_item"
+    >   
+        <ui-typography [color]="colorSwap()"> 
+            Contacts
+        </ui-typography>
+    </a>
+    <a class="menu_item"
+    >   
+        <ui-typography [color]="colorSwap()"> 
+            Location
+        </ui-typography>
+    </a>
+</nav>
+
+

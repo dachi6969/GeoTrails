@@ -1,0 +1,123 @@
+.expand_section_wrap{
+    margin-top: 35px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.expand_content{
+    max-width: 1200px;
+    min-width: 400px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.guides_content{
+    display: flex;
+    flex-direction: column;
+}
+
+.tours_content{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.guides_content_title h1,
+.tours_content_title h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--color-dark);
+    letter-spacing: -0.6px;
+  }
+  
+
+.guides_content_title,
+.tours_content_title{
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+}
+
+
+.guides_content_title p,
+.tours_content_title p {
+    font-size: 17px;
+    max-width: 560px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #475569;         
+}
+  
+
+.guides_content_img{
+    flex: 1;
+    min-height: 450px;
+    background-image: url('/expand_guides_content.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 14px;
+}
+.tours_content_img{
+    flex: 1;
+    min-height: 450px;
+    background-image: url('/expand_tours_content.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 14px;
+}
+
+.content_btn {
+    margin-top: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  
+    padding: 14px 28px;
+    border-radius: 14px;
+    border: 1px solid var(--color-dark);
+  
+    color: var(--color-dark);
+    font-size: 15px;
+    font-weight: 600;
+  
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  
+
+@media (min-width: 1024px) {
+
+    .expand_section_wrap{
+        margin-top: 100px;
+    }
+
+    .guides_content,
+    .tours_content{
+        flex-direction: row;
+    }
+
+    .tours_content_img{
+        order: 0;
+    }
+
+    .expand_content{
+        width: 100%;
+    }
+
+}
+
+@media (hover:hover) and (pointer:fine) {
+
+    .content_btn:hover {
+        transform: translateY(-2px);
+        background: var(--color-dark);
+        color: var(--color-light);
+    }
+
+}

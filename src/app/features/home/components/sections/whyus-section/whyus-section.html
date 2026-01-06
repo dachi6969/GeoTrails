@@ -1,0 +1,22 @@
+<div class="whyus_section_wrap">
+    <div class="whyus-header">
+        <h2>Why travel with us ?!</h2>
+        <p>
+          We focus on real experiences, local knowledge, and carefully
+          designed journeys across Georgia.
+        </p>
+      </div>
+      
+    <section class="whyus_content_wrap">
+        <div class="whyus_content">
+            @for ( card of friendlyCards; track card) {
+                <div class="card">
+                    <h3>{{ card.title }}</h3>
+                    <p>
+                        {{ card.body }}
+                    </p>
+                </div>
+            }
+        </div>
+    </section>
+</div>

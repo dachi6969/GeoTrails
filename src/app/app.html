@@ -1,15 +1,3 @@
-<div class="app-layout">
 
-  @if (!hideHeader()) {
-    <app-header></app-header>
-  }
+<router-outlet></router-outlet>
 
-  <div class="app-content" [class.no-header]="hideHeader()">
-    <router-outlet></router-outlet>
-  </div>
-
-  <footer class="app-footer">
-    <!-- footer later -->
-  </footer>
-
-</div>

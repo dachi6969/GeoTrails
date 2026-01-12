@@ -6,6 +6,7 @@ import { ProfilePage } from './features/profile/pages/profile-page/profile-page'
 import { unsavedLeaveGuard } from './features/auth/pages/register/guards/unsaved-leave-guard';
 import { PublicLayout } from './layout/public-layout/public-layout';
 import { AuthLayout } from './layout/auth-layout/auth-layout';
+import { ToursPage } from './features/tours/pages/tours-page/tours-page';
 
 export const routes: Routes = [
     { 
@@ -14,6 +15,7 @@ export const routes: Routes = [
         children: [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomePage },
+            { path: 'tours', component: ToursPage }
         ]
     },
     {

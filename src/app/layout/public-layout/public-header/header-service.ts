@@ -1,4 +1,6 @@
 import { computed, Injectable, signal } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +15,8 @@ export class HeaderService {
     return (
     this.isScrolled() ||
     this.isHovered() ||
-    this.isSmallScreen() ) ? 
+    this.isSmallScreen() 
+    ) ? 
     'white' : 'transparent'
   })
 

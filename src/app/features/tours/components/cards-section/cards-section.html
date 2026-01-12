@@ -1,0 +1,28 @@
+<section class="cards_section_wrap">
+    <div class="cards_content">
+
+        @if ( loading() ) {
+            <div class="spinner-backdrop">
+                <div class="spinner"></div>
+              </div>
+        }
+        
+        @for (tour of toursData(); track tour.id) {
+            <div class="card_wrap">
+
+                <div class="card_img">
+                    <img [src]="tour.images.card" class="img" />
+                </div>
+            
+                <div class="card_body">
+                    <h2>{{ tour.title }} tour</h2>
+                    <p>
+                        {{ tour.dayDuration }}days | {{ tour.title }}
+                    </p>
+                    <span>{{ tour.price }}Gel</span>
+                </div>
+            
+            </div>
+        }
+    </div>
+</section>

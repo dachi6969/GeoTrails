@@ -27,7 +27,7 @@
     position: relative;
     z-index: 2;
     max-width: 720px;
-    color: #fff;
+    color: var(--color-light);
     animation: fadeUp 0.9s ease forwards;
     opacity: 0;
     animation-delay: 0.5s;

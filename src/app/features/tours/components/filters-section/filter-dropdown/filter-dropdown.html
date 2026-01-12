@@ -1,0 +1,24 @@
+<div class="dropdown" (click)="toggle(); $event.stopPropagation()">
+
+    <div class="dropdown__selected"
+    [style.width]="maxWidth() ? '100%' : ''"
+    >
+        {{ selected() || placeholder() }}
+    </div>
+  
+    @if ( open() && options()?.length ) {
+      <ul class="dropdown__list" >
+        @for (option of options(); track option) {
+          <li
+          class="dropdown__item"
+          (click)="select(option); $event.stopPropagation()"
+          >
+          {{ option }}
+        </li>
+        }
+      </ul>
+    }
+
+  
+  </div>
+  

@@ -19,76 +19,33 @@ class="mobile_menu_modal"
                     />
                 </div>
                 <nav class="sidebar_navigation">
+
                     <a class="menu_item" 
                     routerLink="/home"
                     (click)="closeMenu()"
                     >
                         Home
                     </a>
-                    <button class="menu_item" (click)="tourSectionToggle()">
+
+                    <a class="menu_item" 
+                    routerLink="/tours"
+                    (click)="closeMenu()"
+                    >
                         <span>
                             Tours
                         </span>
-                        @switch (isTourSectionOpen()) {
-                            @case (true) {
-                                <up-arrow 
-                                color="dark"
-                                [size]="19"
-                                />
-                            }
-    
-                            @case (false) {
-                                <down-arrow 
-                                color="dark"
-                                [size]="19"
-                                />
-                            }
-                        }
-                    </button>
-                    @if ( isTourSectionOpen() ) {
-                        @for (title of tourTitles(); track title) {
-                            <button class="tours_menu_item">
-                                <span>
-                                    {{ title }}
-                                </span>
-                            </button>    
-                        }
-                    }
-                    <button class="menu_item" (click)="guideSectionToggle()">
+                    </a>
+
+                    <a class="menu_item">
                         <span>
                             Guides
                         </span>
-                        @switch (isGuideSectionOpen()) {
-                            @case (true) {
-                                <up-arrow 
-                                color="dark"
-                                [size]="19"
-                                />
-                            }
-    
-                            @case (false) {
-                                <down-arrow 
-                                color="dark"
-                                [size]="19"
-                                />
-                            }
-                        }
-                    </button>
-                    @if ( isGuideSectionOpen() ) {
-                        @for (guide of guides(); track guide) {
-                            <button class="guides_menu_item">
-                                <span>
-                                    {{ guide.name }} {{ guide.lastname }}
-                                </span>
-                                <span class="guides_ratings">
-                                    {{ guide.rating |  ratingStars}}
-                                </span>
-                            </button>    
-                        }
-                    }
+                    </a>
+
                     <a class="menu_item">
                         Contacts
                     </a>
+
                 </nav>
             </div>
 

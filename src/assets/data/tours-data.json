@@ -2,14 +2,14 @@
     {
         "id": 1,
         "title": "Kazbegi",
-        "dayDuration": 1,
+        "dayDuration": 3,
         "category": "mountain",
         "price": 135,
         "shortDescription": "Explore the heart of the Caucasus mountains with breathtaking views and ancient history.",
         "description": "Kazbegi is one of Georgia's most iconic mountain destinations, located along the historic Georgian Military Road. Surrounded by towering Caucasus peaks, the region is best known for the Gergeti Trinity Church, dramatically set against Mount Kazbek. This tour offers stunning alpine views, fresh mountain air, and a journey through scenic gorges and historic landmarks, making it ideal for travelers who want to experience Georgia's mountain beauty in a single, unforgettable day.",
         "visitorsCount": 2177,
         "images": {
-            "card": "",
+            "card": "/kazbegi_card.jpg",
             "intro": "",
             "gallery": [
                 ""
@@ -19,18 +19,139 @@
     {
         "id": 2,
         "title": "Svaneti",
-        "dayDuration": 1,
+        "dayDuration": 2,
         "category": "mountain",
         "price": 175,
         "shortDescription": "Discover the untouched mountain region of Svaneti, famous for its medieval towers, dramatic landscapes, and remote alpine villages.",
         "description": "Svaneti is one of Georgia's most breathtaking mountain regions, located high in the Caucasus and known for its ancient defensive towers, deep valleys, and authentic village life. This tour takes you through Mestia and Ushguli — one of the highest permanently inhabited villages in Europe — offering panoramic mountain views, rich cultural heritage, and a rare glimpse into Georgia's untouched alpine traditions. Ideal for travelers seeking nature, history, and true wilderness.",
         "visitorsCount": 2946,
         "images": {
-            "card": "",
+            "card": "/svaneti_card.jpg",
             "intro": "",
             "gallery": [
                 ""
             ]
         }
+    },
+    {
+        "id": 3,
+        "title": "Batumi",
+        "dayDuration": 1,
+        "category": "sea",
+        "price": 120,
+        "shortDescription": "Experience Georgia's modern seaside city with palm-lined boulevards and vibrant nightlife.",
+        "description": "Batumi is Georgia's main Black Sea resort city, combining modern architecture with subtropical nature and historic charm. This tour includes walks along Batumi Boulevard, views of the Black Sea coast, and visits to iconic landmarks such as the Alphabet Tower and Europe Square. Ideal for travelers who want a relaxing coastal atmosphere mixed with city life.",
+        "visitorsCount": 4120,
+        "images": {
+            "card": "/batumi_card.jpg",
+            "intro": "",
+            "gallery": [""]
+        }
+    },
+    {
+        "id": 4,
+        "title": "Bakhmaro",
+        "dayDuration": 2,
+        "category": "mountain",
+        "price": 160,
+        "shortDescription": "Escape into the highland resort of Bakhmaro, known for its fresh air and alpine meadows.",
+        "description": "Bakhmaro is a unique high-mountain resort located in western Georgia, famous for its wooden cottages, pine forests, and clouds drifting through the valley. This tour offers peaceful nature, breathtaking mountain views, and a refreshing climate far from city noise. Perfect for travelers seeking calm, fresh air, and scenic landscapes.",
+        "visitorsCount": 1348,
+        "images": {
+            "card": "/bakhmaro_card.jpg",
+            "intro": "",
+            "gallery": [""]
+        }
+    },
+    {
+        "id": 5,
+        "title": "Kakheti",
+        "dayDuration": 1,
+        "category": "wine",
+        "price": 140,
+        "shortDescription": "Discover Georgia's famous wine region with vineyards, monasteries, and tastings.",
+        "description": "Kakheti is the heart of Georgian wine culture, home to ancient winemaking traditions that date back thousands of years. This tour includes visits to vineyards, traditional wine cellars (qvevri), and historic monasteries set among rolling hills. Ideal for travelers interested in culture, history, and authentic Georgian flavors.",
+        "visitorsCount": 3562,
+        "images": {
+            "card": "/kakheti_card.jpg",
+            "intro": "",
+            "gallery": [""]
+        }
+    },
+    {
+        "id": 6,
+        "title": "Borjomi",
+        "dayDuration": 1,
+        "category": "nature",
+        "price": 110,
+        "shortDescription": "Relax in the famous spa town of Borjomi, surrounded by forests and mineral springs.",
+        "description": "Borjomi is a well-known resort town famous for its natural mineral water and lush green surroundings. This tour includes a walk through Borjomi Central Park, tasting mineral water straight from the source, and enjoying scenic forest views. Perfect for a calm and refreshing day trip.",
+        "visitorsCount": 2489,
+        "images": {
+            "card": "/borjomi_card.jpg",
+            "intro": "",
+            "gallery": [""]
+        }
+    },
+    {
+        "id": 7,
+        "title": "Martvili Canyon",
+        "dayDuration": 1,
+        "category": "nature",
+        "price": 115,
+        "shortDescription": "Explore crystal-clear waters, waterfalls, and dramatic canyon landscapes.",
+        "description": "Martvili Canyon is a natural wonder in western Georgia, known for its turquoise waters, limestone cliffs, and scenic boat rides. This tour offers breathtaking views, short walks, and unforgettable photo opportunities in one of Georgia's most picturesque locations.",
+        "visitorsCount": 2897,
+        "images": {
+            "card": "/martvili_canyon_card.jpg",
+            "intro": "",
+            "gallery": [""]
+        }
+    },
+    {
+        "id": 8,
+        "title": "Vardzia",
+        "dayDuration": 1,
+        "category": "history",
+        "price": 130,
+        "shortDescription": "Visit the ancient cave monastery carved into the cliffs of southern Georgia.",
+        "description": "Vardzia is a remarkable rock-hewn monastery complex dating back to the 12th century. Built into a cliff overlooking the Mtkvari River, it once housed thousands of monks. This tour is ideal for history lovers interested in medieval architecture and Georgia's rich past.",
+        "visitorsCount": 1983,
+        "images": {
+            "card": "/vardzia_card.jpg",
+            "intro": "",
+            "gallery": [""]
+        }
+    },
+    {
+        "id": 9,
+        "title": "Gudauri",
+        "dayDuration": 1,
+        "category": "mountain",
+        "price": 125,
+        "shortDescription": "Enjoy panoramic mountain views and alpine landscapes in Gudauri.",
+        "description": "Gudauri is a popular mountain resort located in the Greater Caucasus range. Known for its wide-open views and fresh mountain air, this tour is perfect for both winter and summer travelers who want to experience Georgia's alpine beauty without long travel.",
+        "visitorsCount": 2675,
+        "images": {
+            "card": "/gudauri_card.jpg",
+            "intro": "",
+            "gallery": [""]
+        }
+    },
+    {
+        "id": 10,
+        "title": "Uplistsikhe",
+        "dayDuration": 1,
+        "category": "history",
+        "price": 105,
+        "shortDescription": "Explore one of Georgia's oldest cave cities carved into rock.",
+        "description": "Uplistsikhe is an ancient rock-cut city that dates back to the early Iron Age. Located near Gori, it features tunnels, halls, and ancient structures carved directly into stone. This tour is perfect for travelers interested in archaeology, history, and unique landscapes.",
+        "visitorsCount": 2234,
+        "images": {
+            "card": "/uplistsikhe_card.jpg",
+            "intro": "",
+            "gallery": [""]
+        }
     }
+    
 ]

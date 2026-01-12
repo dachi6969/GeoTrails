@@ -12,19 +12,11 @@
     display: flex;
     align-items: center;
     gap: 4px;
+    text-decoration: none;
 }
 
 .menu_group{
   position: relative;
-}
-
-.tours, .guides{
-    all: unset;
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    cursor: pointer;
 }
 
   /* show dropdown */

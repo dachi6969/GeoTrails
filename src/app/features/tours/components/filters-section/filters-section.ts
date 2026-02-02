@@ -3,6 +3,11 @@ import { FilterDropdown } from "./filter-dropdown/filter-dropdown";
 import { TourService } from '../../../../core/services/tours/tour-service';
 import { ToursFilterService } from '../../services/tours-filter-service';
 
+export type Category = {
+  option: string;
+  dropDownName: string;
+}
+
 @Component({
   selector: 'app-filters-section',
   imports: [FilterDropdown],
@@ -11,16 +16,20 @@ import { ToursFilterService } from '../../services/tours-filter-service';
 })
 export class FiltersSection {
 
-  toursPrices = ['0 - 50', '50 - 100', '100 - 200'];
+  toursPrices = ['0 - 100', '100 - 200', '200 - 300'];
+
+  categoryVal = signal('');
+  dayDurationVal = signal('');
+  priceVal = signal('');
   
-  toursFilterSerice = inject(ToursFilterService);
-  tourService = inject(TourService);
+  private toursFilterSerice = inject(ToursFilterService);
+  private tourService = inject(TourService);
   tours = this.tourService.data;
 
   toursCategories = computed(() => {
-    const arr: any = [];
+    const arr: string[] = [];
     this.tours()?.map((tour) => {
-      if ( !arr.includes(`${tour.category}`) ) {
+      if ( !arr.includes(`${tour.category}` ) ) {
         arr.push(tour.category);
       }
     })
@@ -28,7 +37,7 @@ export class FiltersSection {
   });
 
   toursDurations = computed(() => {
-    const arr: any = [];
+    const arr: any[] = [];
     this.tours()?.map((tour) => {
       if ( !arr.includes(tour.dayDuration) ) {
         arr.push(tour.dayDuration);
@@ -37,14 +46,25 @@ export class FiltersSection {
     return arr;
   });
 
-  categoryValue (category: any): void {
-    if ( category.dropDownName === 'Category' ) {
-      this.toursFilterSerice.categoryValue.set(category.option)
-    }else if ( category.dropDownName === 'Duration' ) {
-      this.toursFilterSerice.durationValue.set(category.option)
-    }else if ( category.dropDownName === 'Price' ) {
-      this.toursFilterSerice.priceValue.set(category.option)
-    }
+  categoryValue (category: Category): void {
+    this.categoryVal.set(category.option);
+  };
+
+  durationValue (category: Category) {
+    this.dayDurationVal.set(category.option);
+  };
+
+  priceValue (category: Category) {
+    this.priceVal.set(category.option);
+  };
+
+  filterClick() {
+    this.toursFilterSerice.filtered.update(prev => ({
+      ...prev,
+      category: this.categoryVal(),
+      dayDuration: this.dayDurationVal(),
+      price: this.priceVal()
+    }))
   }
 
 }

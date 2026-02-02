@@ -12,17 +12,19 @@
         <filter-dropdown 
         [options]="toursDurations()"
         placeholder="Duration"
-        (valueChange)="categoryValue($event)"
+        (valueChange)="durationValue($event)"
         [maxWidth]="true"
         />
 
         <filter-dropdown 
         [options]="toursPrices"
         placeholder="Price"
-        (valueChange)="categoryValue($event)"
+        (valueChange)="priceValue($event)"
         [maxWidth]="true"
         />
 
-        <button>Filter</button>
+        <button (click)="filterClick()">
+            Filter
+        </button>
     </div>
 </section>

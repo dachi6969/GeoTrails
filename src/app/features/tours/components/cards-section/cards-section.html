@@ -6,6 +6,12 @@
                 <div class="spinner"></div>
               </div>
         }
+
+        @if ( !loading() && toursData()?.length === 0 ) {
+            <div class="no-result">
+                <p>0 search result...!</p>
+            </div>
+        }
         
         @for (tour of toursData(); track tour.id) {
             <div class="card_wrap">

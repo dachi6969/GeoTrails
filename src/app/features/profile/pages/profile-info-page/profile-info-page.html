@@ -1,0 +1,89 @@
+<main class="profile_info_wrap">
+
+    <div style="display: flex; flex-direction: column; gap: 50px;">
+        <div class="profile_info_title">
+            <h1>
+                Personal information
+            </h1>
+            @if ( isInfoDisabled() ) {
+                <ui-button 
+                variant="filled"
+                color="warning"
+                (onClick)="toggleInfoButton()"
+                >
+                    Edit profile
+                </ui-button>
+            }@else {
+                <ui-button 
+                variant="filled"
+                color="success"
+                (onClick)="toggleInfoButton()"
+                >
+                    Save changes
+                </ui-button>
+            }
+        </div>
+        <div class="profile_fields_wrap">
+            <div class="input-group">
+                <label>Email: </label>
+                <input 
+                type="email" 
+                [value]="emailInputVal()"
+                (input)="emailInputVal.set($event.target.value)"
+                [disabled]="isInfoDisabled()"
+                />
+            </div>
+            <div class="input-group">
+                <label>Phone number: </label>
+                <input 
+                type="tel"
+                [value]="phoneInputVal()"
+                (input)="phoneInputVal.set($event.target.value)"
+                [disabled]="isInfoDisabled()"
+                />
+            </div>
+            <div class="input-group">
+                <label>Password: </label>
+                <input 
+                type="password"
+                [value]="passwordInputVal()"
+                (input)="passwordInputVal.set($event.target.value)"
+                [disabled]="isInfoDisabled()"
+                />
+            </div>
+        </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap:50px;">
+        <div class="profile_info_title">
+            <h1>
+                Card information
+            </h1>
+            <div style="display: flex; gap: 10px;">
+                <ui-button 
+                variant="filled"
+                color="success"
+                >
+                    Add card
+                </ui-button>
+                <ui-button 
+                variant="filled"
+                color="warning"
+                >
+                    Edit
+                </ui-button>
+            </div>
+        </div>
+        <div class="profile_fields_wrap" style="text-align: center;">
+            <p>
+                No cards yet.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <a routerLink="/home">
+            Back to home 
+        </a>
+    </footer>
+
+</main>

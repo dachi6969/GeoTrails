@@ -1,0 +1,17 @@
+.profile_layout_wrap {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+}
+
+
+@media (min-width: 768px) {
+    .profile_layout_wrap{
+        flex-direction: row;
+    }
+    .page_content{
+        margin-left: 350px;
+        width: 100%;
+    }
+}

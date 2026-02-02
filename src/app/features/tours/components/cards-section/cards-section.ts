@@ -15,17 +15,25 @@ export class CardsSection implements OnInit {
   tours = this.tourService.data;
   loading = this.tourService.loading;
 
+  filteredCategory = this.toursFilterService.filtered;
+
   toursData = computed(() => {
-    if (
-      this.toursFilterService.categoryValue() ||
-      this.toursFilterService.durationValue() ||
-      this.toursFilterService.priceValue() 
-    ){
-      return this.tours()?.filter((tour) => {
-        return tour.category === this.toursFilterService.categoryValue().toLowerCase()
-      })
-    }
-    return this.tours();
+    const category = this.filteredCategory()['category'];
+    const dayDuration = this.filteredCategory()['dayDuration'];
+    const price = this.filteredCategory()['price'];
+
+    const filteredTours = this.tours()?.filter(tour => {
+      return (
+        tour.category.includes(category) &&  
+        tour.dayDuration.toString().includes(dayDuration)
+      )
+    })
+
+    console.log(filteredTours)
+    console.log(category)
+    console.log(dayDuration)
+
+    return filteredTours;
   })
 
   ngOnInit(): void {

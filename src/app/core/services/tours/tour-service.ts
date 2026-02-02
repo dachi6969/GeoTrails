@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { delay, retry, timer } from 'rxjs';
+import { delay, retry } from 'rxjs';
 
 export type ImagesType = {
   card: string;

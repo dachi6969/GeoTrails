@@ -19,7 +19,7 @@
     justify-content: center;
     gap: 12px;
 
-    background-color: white;
+    background-color: var(--color-bg);
 
     /* overflow-x: scroll;
     scrollbar-width: none; */

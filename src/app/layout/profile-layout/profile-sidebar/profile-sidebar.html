@@ -1,0 +1,33 @@
+<aside class="profile_sidebar_wrap">
+
+    <div class="profile_img_wrap">
+        <div class="circle"></div>
+        <h2>{{ profileName() }} {{ profileLastname() }}</h2>
+    </div>
+
+    <nav class="profile_nav">
+        
+        <button class="nav_item" (click)="navToProfileInfo()">
+            <span>
+                Personal information
+            </span>
+            <right-arrow color="light" [size]="20"/>
+        </button>
+
+        <button class="nav_item" (click)="navToProfileBookings()">
+            <span>
+                My bookings
+            </span>
+            <right-arrow color="light" [size]="20"/>
+        </button>
+
+        <button class="nav_item" (click)="navToProfileSettings()">
+            <span>
+                Profile Settings
+            </span>
+            <right-arrow color="light" [size]="20"/>
+        </button>
+
+    </nav>
+
+</aside>

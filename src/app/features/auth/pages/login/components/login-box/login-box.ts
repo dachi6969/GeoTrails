@@ -3,6 +3,9 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthInput } from "../../../../../../shared/components/inputs/auth-input/auth-input";
 import { ValidationService } from '../../../../../../core/services/validators/validation-service';
 import { LoginAuthService } from '../../services/login-auth-service';
+import { StatusService } from '../../../../../../core/services/user-status/status-service';
+import { Router } from '@angular/router';
+import { UserInfoService } from '../../../../../../core/services/user-info/user-info-service';
 
 @Component({
   selector: 'login-box',
@@ -12,10 +15,13 @@ import { LoginAuthService } from '../../services/login-auth-service';
 })
 export class LoginBox {
 
-  userInfo = JSON.parse(localStorage.getItem('userInfo') ?? '');
-
   validationService = inject(ValidationService);
   loginAuthService = inject(LoginAuthService);
+  statusService = inject(StatusService);
+  router = inject(Router);
+  
+  userInfoService = inject(UserInfoService);
+  userInfo = this.userInfoService.userInfo;
 
   form = new FormGroup({
     email: new FormControl('', [
@@ -43,12 +49,15 @@ export class LoginBox {
     this.form.markAllAsTouched();
     this.form.markAllAsDirty();
 
-    if (this.userInfo && this.form.valid) {
+    if (this.userInfo() && this.form.valid) {
       const isCorrectInfo = 
-      this.loginAuthService.compareFields(this.loginInfo, this.userInfo)
+      this.loginAuthService.compareFields(this.loginInfo, this.userInfo())
 
       if (isCorrectInfo) {
         console.log('emtxveva')
+        this.statusService.isLoggedIn.set(true);
+        sessionStorage.setItem('userStatus', 'true');
+        this.router.navigate(['profile', `${this.userInfo().name}`])
       }else{
         this.form.get('email')?.setErrors({
           invalidLogin: true

@@ -10,7 +10,7 @@ import { RouterLink } from "@angular/router";
 })
 export class ProfileInfoPage {
 
-  userInfo = JSON.parse(localStorage.getItem('userInfo') ?? '');
+  userInfo!: any;
 
   isInfoDisabled = signal<boolean>(true);
 
@@ -19,9 +19,12 @@ export class ProfileInfoPage {
   passwordInputVal = signal( this.userInfo.password );
 
 
-  // constructor() {
-  //   console.log(this.userInfo)
-  // }
+  constructor() {
+    const uInfo = localStorage.getItem('userInfo');
+    if (uInfo) {
+      this.userInfo = JSON.parse(uInfo);
+    }
+  }
 
   toggleInfoButton() {
     this.isInfoDisabled.update(prev => !prev);

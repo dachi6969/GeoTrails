@@ -8,8 +8,10 @@ export class UserInfoService {
   userInfo = signal<any>('');
 
   constructor() {
-    const uInfo = JSON.parse(localStorage.getItem('userInfo') ?? '');
-    this.userInfo.set(uInfo);
+    const uInfo = localStorage.getItem('userInfo');
+    if (uInfo) {
+      this.userInfo.set(JSON.parse(uInfo));
+    }
   }
 
 }

@@ -7,7 +7,7 @@ export const canActiveGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   const statusService = inject(StatusService);
 
-  const userInfo: any = JSON.parse(localStorage.getItem('userInfo') ?? '');
+  const userInfo: any = JSON.parse(localStorage.getItem('userInfo') ?? '{}');
 
   const activeSlug = route.paramMap.get('slug');
 

@@ -43,33 +43,24 @@ export class LoginBox {
     }
   }
 
-
   onSubmit() {
-
     this.form.markAllAsTouched();
     this.form.markAllAsDirty();
 
-    if (this.userInfo() && this.form.valid) {
-      const isCorrectInfo = 
-      this.loginAuthService.compareFields(this.loginInfo, this.userInfo())
-
+    if ( !this.form.valid ) return;
+    if ( !this.userInfo() ) return;
+    
+      const isCorrectInfo =  // comparing current values and existed user info
+      this.loginAuthService.compareFields(this.loginInfo.email, this.loginInfo.password);
+      
       if (isCorrectInfo) {
-        console.log('emtxveva')
         this.statusService.isLoggedIn.set(true);
         sessionStorage.setItem('userStatus', 'true');
-        this.router.navigate(['profile', `${this.userInfo().name}`])
-      }else{
-        this.form.get('email')?.setErrors({
-          invalidLogin: true
-        })
-        this.form.get('password')?.setErrors({
-          invalidLogin: true
-        })
-        // console.log('ar emtxveva')
-        // console.log( this.form.get('email') )
+        this.router.navigate(['profile', `${this.userInfo()?.name}`])
       }
-    }
-
+      else{
+        this.form.setErrors({ invalidLogin: true });
+      }
   }
 
 }

@@ -6,6 +6,9 @@
       typeAs="email"
       formControlName="email" 
       />
+      @if ( form.hasError('invalidLogin') ) {
+        <small>Invalid email or password. Please try again.</small>
+      }
     </div>
   
     <div class="field">
@@ -15,10 +18,13 @@
       typeAs="password"
       formControlName="password" 
       />
-      <a>
-        Forget password?
-      </a>
+      @if ( form.hasError('invalidLogin') ) {
+        <small>Invalid email or password. Please try again.</small>
+      }
     </div>
+    <a>
+      Forget password?
+    </a>
   
     <button 
     class="auth-btn" 

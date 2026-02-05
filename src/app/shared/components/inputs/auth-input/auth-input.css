@@ -6,7 +6,7 @@
 }
 
 small{
-    color: rgba(221, 2, 2, 0.793)
+    color: var(--color-error);
 }
 
 input {
@@ -33,11 +33,11 @@ input:focus {
 }
 
 .error{
-    border: 1px solid red;
+    border: 1px solid var(--color-error);
     background: rgba(241, 131, 131, 0.157);
 }
 
 .error:focus {
-    border-color: red;
+    border-color: var(--color-error);
     box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.081);
 }

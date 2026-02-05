@@ -1,21 +1,20 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { UserInfoService } from '../../../../../core/services/user-info/user-info-service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginAuthService {
 
+  userInfoService = inject(UserInfoService);
+  userInfo = this.userInfoService.userInfo;
 
-  compareFields(obj1: any, obj2: any): boolean {
 
-    if (
-      ( obj1.email === obj2.email ) &&
-      ( obj1.password === obj2.password )
-    ){
-      return true
-    }
+  compareFields(email: any, password: any): boolean {
 
-    return false;
+    return email === this.userInfo()?.email && 
+    password === this.userInfo()?.password ? 
+    true : false;
   }
 
 }

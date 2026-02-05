@@ -13,7 +13,7 @@
     gap: 4px;
   }
 
-  .field a{
+   a{
     color: #2563eb;
     align-self: flex-end;
     cursor: pointer;
@@ -53,6 +53,10 @@
       0 4px 10px rgba(47, 111, 91, 0.18);
   }
   
+  small{
+    color: var(--color-error);
+  }
+
   /* hover */
   .auth-btn:hover {
     transform: translateY(-1px);

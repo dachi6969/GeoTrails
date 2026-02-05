@@ -29,9 +29,6 @@ export class CardsSection implements OnInit {
       )
     })
 
-    console.log(filteredTours)
-    console.log(category)
-    console.log(dayDuration)
 
     return filteredTours;
   })

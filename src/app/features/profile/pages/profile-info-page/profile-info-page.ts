@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { UiButton } from "../../../../shared/components/buttons/ui-button/ui-button";
 import { RouterLink } from "@angular/router";
+import { UserInfoService } from '../../../../core/services/user-info/user-info-service';
 
 @Component({
   selector: 'app-profile-info-page',
@@ -10,29 +11,23 @@ import { RouterLink } from "@angular/router";
 })
 export class ProfileInfoPage {
 
-  userInfo!: any;
+  userInfoService = inject(UserInfoService);
+  userInfo = this.userInfoService.userInfo;
 
   isInfoDisabled = signal<boolean>(true);
 
-  emailInputVal = signal( this.userInfo.email );
-  phoneInputVal = signal( this.userInfo.phone );
-  passwordInputVal = signal( this.userInfo.password );
+  emailInputVal = signal( this.userInfo()?.email );
+  phoneInputVal = signal( this.userInfo()?.phone );
+  passwordInputVal = signal( this.userInfo()?.password );
 
-
-  constructor() {
-    const uInfo = localStorage.getItem('userInfo');
-    if (uInfo) {
-      this.userInfo = JSON.parse(uInfo);
-    }
-  }
 
   toggleInfoButton() {
     this.isInfoDisabled.update(prev => !prev);
 
     if ( 
-      this.userInfo.email === this.emailInputVal() &&
-      this.userInfo.phone === this.phoneInputVal() &&
-      this.userInfo.password === this.passwordInputVal()
+      this.userInfo()?.email === this.emailInputVal() &&
+      this.userInfo()?.phone === this.phoneInputVal() &&
+      this.userInfo()?.password === this.passwordInputVal()
       ) return;
 
 

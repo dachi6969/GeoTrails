@@ -20,6 +20,6 @@ export class DesktopMenu {
   private userInfoService = inject(UserInfoService);
 
   private userInfo = this.userInfoService.userInfo;
-  profileNavUrl = `/profile/${this.userInfo().name}`
+  profileNavUrl = `/profile/${this.userInfo()?.name}`
 
 }

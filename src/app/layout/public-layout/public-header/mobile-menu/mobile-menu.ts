@@ -32,7 +32,7 @@ export class MobileMenu {
   };
 
   navToProfilePage() {
-    this.router.navigate(['profile', `${this.userInfo().name}`]);
+    this.router.navigate(['profile', `${this.userInfo()?.name}`]);
   }
 
 }

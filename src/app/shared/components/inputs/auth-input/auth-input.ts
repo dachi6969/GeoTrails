@@ -78,4 +78,8 @@ export class AuthInput implements ControlValueAccessor {
     this.onTouched()
   }
 
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled.set(isDisabled);
+  }
+
 }

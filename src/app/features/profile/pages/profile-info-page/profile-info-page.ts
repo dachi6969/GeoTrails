@@ -2,10 +2,11 @@ import { Component, inject, signal } from '@angular/core';
 import { UiButton } from "../../../../shared/components/buttons/ui-button/ui-button";
 import { RouterLink } from "@angular/router";
 import { UserInfoService } from '../../../../core/services/user-info/user-info-service';
+import { AuthInput } from "../../../../shared/components/inputs/auth-input/auth-input";
 
 @Component({
   selector: 'app-profile-info-page',
-  imports: [UiButton, RouterLink],
+  imports: [UiButton, RouterLink, AuthInput],
   templateUrl: './profile-info-page.html',
   styleUrl: './profile-info-page.css',
 })

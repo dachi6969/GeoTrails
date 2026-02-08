@@ -73,7 +73,6 @@ export class RegBox {
 
     // *** submit actions ***
   onSubmit() {
-    
     this.form.markAllAsTouched();
     this.form.markAllAsDirty();
 

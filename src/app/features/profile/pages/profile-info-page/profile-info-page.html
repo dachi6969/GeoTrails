@@ -5,11 +5,11 @@
             <h1>
                 Personal information
             </h1>
-            @if ( isInfoDisabled() ) {
+            @if ( isInfoEditable() ) {
                 <ui-button 
                 variant="filled"
                 color="warning"
-                (onClick)="toggleInfoButton()"
+                (onClick)="toggleInfoButton('Edit Profile')"
                 >
                     Edit profile
                 </ui-button>
@@ -17,41 +17,39 @@
                 <ui-button 
                 variant="filled"
                 color="success"
-                (onClick)="toggleInfoButton()"
+                (onClick)="toggleInfoButton('Save changes')"
                 >
                     Save changes
                 </ui-button>
             }
         </div>
-        <div class="profile_fields_wrap">
+        <form 
+        [formGroup]="form"
+        class="profile_fields_wrap"
+        >
             <div class="input-group">
                 <label>Email: </label>
-                <input 
-                type="email" 
-                [value]="emailInputVal()"
-                (input)="emailInputVal.set($event.target.value)"
-                [disabled]="isInfoDisabled()"
+                <auth-input 
+                typeAs="email"
+                formControlName="email"
                 />
             </div>
             <div class="input-group">
                 <label>Phone number: </label>
-                <input 
-                type="tel"
-                [value]="phoneInputVal()"
-                (input)="phoneInputVal.set($event.target.value)"
-                [disabled]="isInfoDisabled()"
+                <auth-input 
+                typeAs="tel"
+                formControlName="phone"
                 />
             </div>
             <div class="input-group">
                 <label>Password: </label>
-                <input 
-                type="password"
-                [value]="passwordInputVal()"
-                (input)="passwordInputVal.set($event.target.value)"
-                [disabled]="isInfoDisabled()"
+                <auth-input 
+                typeAs="password"
+                formControlName="password"
                 />
             </div>
-        </div>
+
+        </form>
     </div>
     <div style="display: flex; flex-direction: column; gap:50px;">
         <div class="profile_info_title">

@@ -6,6 +6,7 @@ import { RegisterService } from '../../services/register-service';
 import { SucessfullyRegisterModal } from "./successfully-register-modal/successfully-register-modal";
 import { UnsavedChangesModal } from "./unsaved-changes-modal/unsaved-changes-modal";
 import { RouterLink } from "@angular/router";
+import { UserInfoService, UserInfoType } from '../../../../../../core/services/user-info/user-info-service';
 
 @Component({
   selector: 'reg-box',
@@ -23,9 +24,12 @@ import { RouterLink } from "@angular/router";
 export class RegBox {
   
   private validationService = inject(ValidationService);
+  
   registerService = inject(RegisterService);
-
   isRegistered = this.registerService.isInfoSaved;
+
+  userInfoService = inject(UserInfoService);
+  userInfo = this.userInfoService.userInfo;
 
     // *** forms section ***
   form = new FormGroup({
@@ -52,9 +56,7 @@ export class RegBox {
     confirm: new FormControl('', [
       this.validationService.required,
     ]),
-  }, {
-    updateOn: 'blur'
-  });
+  }, { updateOn: 'blur' });
 
     // succesful registration actions 
   finishRegister() {
@@ -62,9 +64,8 @@ export class RegBox {
     this.isRegistered.set(false);
   }
 
-  isMatched() {
-    const password = this.form.controls.password.value;
-    const confirm = this.form.controls.confirm.value;
+  isPasswordMismatch() {
+    const { password, confirm } = this.form.getRawValue();
 
     return confirm !== '' ? 
     confirm !== password : 
@@ -77,23 +78,15 @@ export class RegBox {
     this.form.markAllAsDirty();
 
         // *** actions if pass and confirm match or not ***
-      if ( this.form.valid && !this.isMatched() ) {
+      if ( this.form.valid && !this.isPasswordMismatch() ) {
         
         // *** user's new regist data ***
-          const userNewInfo = {
-            name: this.form.controls.name.value,
-            lastname: this.form.controls.lastname.value,
-            email: this.form.controls.email.value,
-            phone: this.form.controls.phone.value,
-            password: this.form.controls.password.value,
-          }
+          const userNewInfo = this.form.getRawValue();
 
           const anyInfoMatcher = 
           this.registerService
-          .hasAnyEqualValue(
-            userNewInfo, 
-            this.registerService.userInfo
-          ) 
+          .hasAnyEqualValue(userNewInfo, this.userInfo()); // passing new data and existed one!
+
             // *** setting up new error in case of duplicate data ***
           if ( anyInfoMatcher.match ) {
             const control = this.form.get(`${anyInfoMatcher.key}`);
@@ -103,13 +96,9 @@ export class RegBox {
                 fieldName: anyInfoMatcher.key
               }
             })
-          }else{
-              localStorage.setItem(
-              'userInfo', 
-              JSON.stringify(userNewInfo)
-              );
-              this.registerService.saveInfo();
-            }
           }
+          
+          this.registerService.saveInfo(userNewInfo as UserInfoType); 
+        }
   };
 }

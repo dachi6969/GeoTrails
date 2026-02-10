@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 
-export type UserInfoType = {
+export interface UserInfoType {  // warning! move it into separate folder/file !!
   name: string;
   lastname: string;
   phone: string;

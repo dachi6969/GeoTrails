@@ -1,7 +1,8 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, output, signal } from '@angular/core';
 import { FilterDropdown } from "./filter-dropdown/filter-dropdown";
 import { TourService } from '../../../../core/services/tours/tour-service';
 import { ToursFilterService } from '../../services/tours-filter-service';
+import { FormsModule } from '@angular/forms';
 
 export type Category = {
   option: string;
@@ -10,14 +11,15 @@ export type Category = {
 
 @Component({
   selector: 'app-filters-section',
-  imports: [FilterDropdown],
+  imports: [FilterDropdown, FormsModule],
   templateUrl: './filters-section.html',
   styleUrl: './filters-section.css',
 })
 export class FiltersSection {
 
-  toursPrices = ['0 - 100', '100 - 200', '200 - 300'];
+  toursPrices = ['0 - 100', '100 - 150', '150 - 250'];
 
+  searchbarValue = signal('');
   categoryVal = signal('');
   dayDurationVal = signal('');
   priceVal = signal('');
@@ -59,6 +61,8 @@ export class FiltersSection {
   };
 
   filterClick() {
+    this.toursFilterSerice.searchValue.set(this.searchbarValue())
+
     this.toursFilterSerice.filtered.update(prev => ({
       ...prev,
       category: this.categoryVal(),
@@ -66,5 +70,6 @@ export class FiltersSection {
       price: this.priceVal()
     }))
   }
+
 
 }

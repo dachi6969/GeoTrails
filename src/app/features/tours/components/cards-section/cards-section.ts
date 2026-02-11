@@ -11,31 +11,44 @@ import { ToursFilterService } from '../../services/tours-filter-service';
 export class CardsSection implements OnInit {
 
   toursFilterService = inject(ToursFilterService);
+  searchBarValue = this.toursFilterService.searchValue;
+  filteredCategory = this.toursFilterService.filtered;
+  
   tourService = inject(TourService);
   tours = this.tourService.data;
   loading = this.tourService.loading;
 
-  filteredCategory = this.toursFilterService.filtered;
 
+  // triple filtering logic.
   toursData = computed(() => {
-    const category = this.filteredCategory()['category'];
-    const dayDuration = this.filteredCategory()['dayDuration'];
-    const price = this.filteredCategory()['price'];
+    const tours = this.tours() || [];
+    const searched = this.searchBarValue().toLowerCase().trim();
+    const { category, dayDuration, price } = this.filteredCategory();
 
-    const filteredTours = this.tours()?.filter(tour => {
-      return (
-        tour.category.includes(category) &&  
-        tour.dayDuration.toString().includes(dayDuration)
-      )
+    const [ minPrice, maxPrice ] = price.split(' - ').map(Number)
+
+    return tours.filter((tour) => {
+
+    const selectedCategory = 
+    !category || tour.category === category;
+
+    const selectedDayDuration = 
+    !dayDuration || tour.dayDuration === dayDuration; 
+
+    const searchFilter = 
+    !searched || tour.title.toLowerCase().includes(searched);
+
+    const selectedPrice = 
+    !price || (tour.price >= minPrice && tour.price <= maxPrice)
+
+
+    return selectedCategory && selectedDayDuration && searchFilter && selectedPrice
+
     })
-
-
-    return filteredTours;
   })
 
   ngOnInit(): void {
     this.tourService.fetchToursData();
   }
-
 
 }

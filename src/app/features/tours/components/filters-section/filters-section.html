@@ -1,6 +1,10 @@
 <section class="filters_section_wrap">
     <div class="filters_section">
-        <input type="search" placeholder="Search tours..." />
+        <input 
+        type="search" 
+        placeholder="Search tours..." 
+        [(ngModel)]="searchbarValue"
+        />
 
         <filter-dropdown 
         [options]="toursCategories()"

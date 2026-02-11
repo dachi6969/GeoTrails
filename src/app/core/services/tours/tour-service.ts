@@ -38,7 +38,7 @@ export class TourService {
     this.loading.set(true);
 
     this.http.get<ToursDataType[]>('/assets/data/tours-data.json')
-    .pipe( retry(3), delay(3000) )
+    .pipe( retry(3), delay(1000) )
     .subscribe({
       next: (resp) => {
         this.loading.set(false);

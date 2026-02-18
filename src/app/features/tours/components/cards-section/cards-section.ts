@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit } from '@angular/core';
+import { Component, computed, inject, OnDestroy, OnInit } from '@angular/core';
 import { TourService } from '../../../../core/services/tours/tour-service';
 import { ToursFilterService } from '../../services/tours-filter-service';
 
@@ -8,7 +8,7 @@ import { ToursFilterService } from '../../services/tours-filter-service';
   templateUrl: './cards-section.html',
   styleUrl: './cards-section.css',
 })
-export class CardsSection implements OnInit {
+export class CardsSection implements OnInit, OnDestroy {
 
   toursFilterService = inject(ToursFilterService);
   searchBarValue = this.toursFilterService.searchValue;
@@ -49,6 +49,9 @@ export class CardsSection implements OnInit {
 
   ngOnInit(): void {
     this.tourService.fetchToursData();
+  }
+  ngOnDestroy(): void {
+    this.toursFilterService.resetFilter();
   }
 
 }

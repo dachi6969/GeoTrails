@@ -5,13 +5,18 @@ import { Injectable, signal } from '@angular/core';
 })
 export class ToursFilterService {
 
-  searchValue = signal('');
-
-  filtered = signal<any>({
+  initialFilterValue = {
     category: '',
     dayDuration: '',
     price: ''
-  });
+  };
+
+  filtered = signal<any>(this.initialFilterValue);
   
+  searchValue = signal('');
+
+  resetFilter() {
+    this.filtered.set(this.initialFilterValue)
+  }
 
 }

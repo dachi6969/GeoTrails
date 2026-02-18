@@ -48,8 +48,10 @@ export class LoginBox {
     this.form.markAllAsDirty();
 
     if ( !this.form.valid ) return;
-    if ( !this.userInfo() ) return;
-    
+    if ( !this.userInfo() ) {
+      return this.form.setErrors({ invalidLogin: true });
+    }
+      
       const isCorrectInfo =  // comparing current values and existed user info
       this.loginAuthService.compareFields(this.loginInfo.email, this.loginInfo.password);
       

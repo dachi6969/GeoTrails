@@ -9,7 +9,8 @@
       "specialty": "Mountain hiking",
       "location": "Kazbegi",
       "pricePerDay": 120,
-      "available": true
+      "available": true,
+      "image": "/empty_profile_img.png"
     },
     {
       "id": 2,
@@ -21,7 +22,8 @@
       "specialty": "Cultural tours",
       "location": "Tbilisi",
       "pricePerDay": 100,
-      "available": true
+      "available": true,
+      "image": "/empty_profile_img.png"
     },
     {
       "id": 3,
@@ -33,7 +35,8 @@
       "specialty": "Svaneti trekking",
       "location": "Mestia",
       "pricePerDay": 140,
-      "available": false
+      "available": false,
+      "image": "/empty_profile_img.png"
     },
     {
       "id": 4,
@@ -45,7 +48,8 @@
       "specialty": "Wine & countryside tours",
       "location": "Kakheti",
       "pricePerDay": 90,
-      "available": true
+      "available": true,
+      "image": "/empty_profile_img.png"
     },
     {
       "id": 5,
@@ -57,7 +61,21 @@
       "specialty": "Extreme & off-road tours",
       "location": "Tusheti",
       "pricePerDay": 160,
-      "available": true
+      "available": true,
+      "image": "/empty_profile_img.png"
+    },
+    {
+      "id": 6,
+      "name": "Goga",
+      "lastname": "Labadze",
+      "rating": 5.0,
+      "experienceYears": 8,
+      "languages": ["Georgian", "English"],
+      "specialty": "off-road tours",
+      "location": "Bakhmaro",
+      "pricePerDay": 200,
+      "available": true,
+      "image": "/empty_profile_img.png"
     }
   ]
   

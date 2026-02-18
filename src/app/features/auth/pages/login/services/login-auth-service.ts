@@ -12,9 +12,10 @@ export class LoginAuthService {
 
   compareFields(email: any, password: any): boolean {
 
-    return email === this.userInfo()?.email && 
-    password === this.userInfo()?.password ? 
-    true : false;
+    return (
+      email === this.userInfo()?.email && 
+      password === this.userInfo()?.password
+      )
   }
 
 }

@@ -1,0 +1,154 @@
+.guides_page_wrap{
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.guides_page_title{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+}
+.guides_page_title p{
+    color: var(--color-secondary);
+}
+
+.guides_cards_wrap {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;    
+    padding: 18px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 350px));
+    gap: 36px;
+    justify-content: center; 
+}
+
+
+.guides_card {
+    min-width: 350px;
+    min-height: 420px;
+    border-radius: 16px;
+
+    background: linear-gradient(
+        to bottom,
+        var(--color-dark) 35%,
+        var(--color-light) 37%
+    );
+
+    color: var(--color-dark);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.08),
+        0 4px 10px rgba(0, 0, 0, 0.05);
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img{
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+img{
+    border-radius: 500px;
+}
+.card-title{
+    flex: 1;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.card-title-subtitle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-title-subtitle span {
+    font-size: 20px;
+    color: var(--color-dark);
+}
+.card-description p {
+    padding: 2px 0;
+    color: var(--color-secondary);
+}
+
+.hero_content{
+    width: 100%;
+    min-height: 500px;
+    padding-right: 100px;
+    position: relative;
+
+    background-image: url('/guides_page_hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 40px;
+}
+
+.black {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.345);
+    animation: slideIn 0.7s ease-in-out;
+    z-index: 1;
+}
+
+/* ANIMATION */
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        background-color: rgba(0, 0, 0, 0.624);
+    }
+    to {
+        transform: translateX(0);
+        background-color: rgba(0, 0, 0, 0.345);
+    }
+}
+
+@media (max-width: 768px) {
+
+    .guides_page_wrap{
+        margin: 65px auto;
+    }
+
+    .guides_page_title h1{
+        font-size: 28px;
+    }
+    .guides_page_title p{
+        font-size: 16px;
+    }
+
+    .guides_cards_wrap{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero_content{
+        min-height: 30vh;
+    }
+
+}
+
+@media (hover:hover) and (pointer: fine) {
+    .guides_card:hover {
+        transform: translateY(-6px);
+    
+        box-shadow:
+            0 20px 40px rgba(0, 0, 0, 0.12),
+            0 10px 20px rgba(0, 0, 0, 0.08);
+    }
+}

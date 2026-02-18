@@ -11,6 +11,7 @@ import { ProfileLayout } from './layout/profile-layout/profile-layout';
 import { ProfileSettingsPage } from './features/profile/pages/profile-settings-page/profile-settings-page';
 import { ProfileBookingsPage } from './features/profile/pages/profile-bookings-page/profile-bookings-page';
 import { canActiveGuard } from './features/profile/guards/can-active-guard';
+import { GuidesPage } from './features/guides/pages/guides-page/guides-page';
 
 export const routes: Routes = [
     { 
@@ -19,7 +20,8 @@ export const routes: Routes = [
         children: [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomePage },
-            { path: 'tours', component: ToursPage }
+            { path: 'tours', component: ToursPage },
+            { path: 'guides', component: GuidesPage }
         ]
     },
     {

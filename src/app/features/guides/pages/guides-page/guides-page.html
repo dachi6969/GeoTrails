@@ -1,0 +1,51 @@
+<main class="guides_page_wrap">
+
+    <div class="hero_content">
+        <div class="black"></div> 
+    </div>
+
+    <div class="guides_page_title">
+        <h1>Meet our expert guides.</h1>
+        <p>Experienced locals ready to lead your next adventure</p>
+    </div>
+    <div class="guides_cards_wrap">
+
+    @if ( guides$ | async; as guides ) {
+        @for( guide of guides; track guide.id ) {
+            <div class="guides_card">
+                <div class="card-img">
+                    <img 
+                    [ngSrc]="guide.image" 
+                    alt="guide" 
+                    priority="true" 
+                    width="170" 
+                    height="170" 
+                    />
+                </div>
+                <div class="card-title">
+                    <div class="card-title-subtitle">
+                        <h2>
+                            {{ guide.name }} {{ guide.lastname }}
+                        </h2>
+                        <span>
+                            {{ guide.rating | ratingFormat }} ⭐
+                        </span>
+                    </div>
+                    <div class="card-description">
+                        <p>Languages: {{ guide.languages }}</p>
+                        <p>{{ guide.specialty }}</p>
+                    </div>
+                    <ui-button
+                    [fullWidth]="true"
+                    variant="outlined"
+                    color="dark"
+                    >
+                        View
+                    </ui-button>
+                </div>
+            </div>
+        }
+    }
+
+    </div>
+</main>

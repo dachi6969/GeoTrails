@@ -1,55 +1,60 @@
-import { Component, computed, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { TourService } from '../../../../core/services/tours/tour-service';
 import { ToursFilterService } from '../../services/tours-filter-service';
+import { CommonModule } from '@angular/common';
+import { combineLatest, debounceTime, distinctUntilChanged, map } from 'rxjs';
+import { toObservable } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-cards-section',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './cards-section.html',
   styleUrl: './cards-section.css',
 })
-export class CardsSection implements OnInit, OnDestroy {
+export class CardsSection implements OnDestroy {
 
   toursFilterService = inject(ToursFilterService);
   searchBarValue = this.toursFilterService.searchValue;
   filteredCategory = this.toursFilterService.filtered;
   
   tourService = inject(TourService);
-  tours = this.tourService.data;
-  loading = this.tourService.loading;
 
+  readonly tours$ =
+  this.tourService.getTours();
 
-  // triple filtering logic.
-  toursData = computed(() => {
-    const tours = this.tours() || [];
-    const searched = this.searchBarValue().toLowerCase().trim();
-    const { category, dayDuration, price } = this.filteredCategory();
+  readonly filteredTours$ = 
+  combineLatest([
+    this.tours$,
+    toObservable(this.filteredCategory),
+    toObservable(this.searchBarValue)
+    .pipe(
+      debounceTime(300),
+      distinctUntilChanged()
+    )
+  ]).pipe(
+    map(([tours,filters,searchVal]) => {
+      const { category, dayDuration, price } = filters;
+      const searched = searchVal.toLowerCase().trim();
+      const [ minPrice, maxPrice ] = price.split(' - ').map(Number);
 
-    const [ minPrice, maxPrice ] = price.split(' - ').map(Number)
+      return tours.filter(tour => {
+        const selectedCategory = 
+        !category || tour.category === category;
 
-    return tours.filter((tour) => {
+        const selectedDayDuration = 
+        !dayDuration || String(tour.dayDuration) === dayDuration; 
 
-    const selectedCategory = 
-    !category || tour.category === category;
+        const selectedPrice = 
+        !price || (tour.price >= minPrice && tour.price <= maxPrice);
 
-    const selectedDayDuration = 
-    !dayDuration || tour.dayDuration === dayDuration; 
+        const searchFilter = 
+        !searched || tour.title.toLowerCase().includes(searched);
 
-    const searchFilter = 
-    !searched || tour.title.toLowerCase().includes(searched);
-
-    const selectedPrice = 
-    !price || (tour.price >= minPrice && tour.price <= maxPrice)
-
-
-    return selectedCategory && selectedDayDuration && searchFilter && selectedPrice
-
+        return selectedCategory && selectedDayDuration && selectedPrice && searchFilter
+      })
     })
-  })
+  )
 
-  ngOnInit(): void {
-    this.tourService.fetchToursData();
-  }
   ngOnDestroy(): void {
     this.toursFilterService.resetFilter();
   }

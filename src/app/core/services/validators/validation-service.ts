@@ -8,7 +8,7 @@ type ValidatorsType = ValidationErrors | null;
 })
 export class ValidationService {
 
-    // required 
+  // required 
 
   required(control: AbstractControl):ValidatorsType {
     const value = control.value?.trim();

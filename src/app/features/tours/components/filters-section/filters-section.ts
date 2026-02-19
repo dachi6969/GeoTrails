@@ -1,8 +1,10 @@
-import { Component, computed, inject, output, signal } from '@angular/core';
+import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { FilterDropdown } from "./filter-dropdown/filter-dropdown";
 import { TourService } from '../../../../core/services/tours/tour-service';
 import { ToursFilterService } from '../../services/tours-filter-service';
 import { FormsModule } from '@angular/forms';
+import { map } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 export type Category = {
   option: string;
@@ -11,7 +13,7 @@ export type Category = {
 
 @Component({
   selector: 'app-filters-section',
-  imports: [FilterDropdown, FormsModule],
+  imports: [FilterDropdown, FormsModule, CommonModule],
   templateUrl: './filters-section.html',
   styleUrl: './filters-section.css',
 })
@@ -26,41 +28,23 @@ export class FiltersSection {
   
   private toursFilterSerice = inject(ToursFilterService);
   private tourService = inject(TourService);
-  tours = this.tourService.data;
+  readonly tours$ = this.tourService.getTours();
 
-  toursCategories = computed(() => {
-    const arr: string[] = [];
-    this.tours()?.map((tour) => {
-      if ( !arr.includes(`${tour.category}` ) ) {
-        arr.push(tour.category);
-      }
-    })
-    return arr;
-  });
+  readonly toursCategories$ = this.tours$.pipe(
+    map(tours => 
+      [...new Set(tours.map(tour => String(tour.category)))] // returning existed categories for dropdown
+    ));
 
-  toursDurations = computed(() => {
-    const arr: any[] = [];
-    this.tours()?.map((tour) => {
-      if ( !arr.includes(tour.dayDuration) ) {
-        arr.push(tour.dayDuration);
-      }
-    })
-    return arr;
-  });
+  readonly toursDurations$ = this.tours$.pipe(
+    map(tours => 
+      [...new Set(tours.map(tour => String(tour.dayDuration)))] // returning existed dayDurations for dropdown
+    ));
 
-  categoryValue (category: Category): void {
-    this.categoryVal.set(category.option);
+  setValue(signalRef: WritableSignal<string>, option: string): void {
+    signalRef.set(option);
   };
 
-  durationValue (category: Category) {
-    this.dayDurationVal.set(category.option);
-  };
-
-  priceValue (category: Category) {
-    this.priceVal.set(category.option);
-  };
-
-  filterClick() {
+  filterClick(): void {
     this.toursFilterSerice.searchValue.set(this.searchbarValue())
 
     this.toursFilterSerice.filtered.update(prev => ({
@@ -69,7 +53,7 @@ export class FiltersSection {
       dayDuration: this.dayDurationVal(),
       price: this.priceVal()
     }))
-  }
+  };
 
 
 }

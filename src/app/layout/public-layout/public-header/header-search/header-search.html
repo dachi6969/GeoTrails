@@ -6,7 +6,7 @@
     (onClick)="openSearch()"
     />
 
-    @if ( searchIsOpen() ) {
+    @if ( isSearchOpen() ) {
         <div class="search_modal">
 
             <div class="search_modal_box">
@@ -23,27 +23,26 @@
                     placeholder="Search tours..."
                     #headerSearch
                     class="search_input"
-                    [value]="inputValue()"
-                    (input)="inputValueChange($event)"
+                    [formControl]="form"
                     />
     
                 </div>
                 <div class="search_result_wrap">
-                    @if (searchMatch() !== null) {
-                        @for( searchResult of searchMatch(); let i = $index; track i;) {
+                    @if ( tourTitles$ | async; as tourTitles ) {
+                            @for ( tour of tourTitles; let i = $index; track i ) {
                             <button class="search_result" 
                             [class.active]="activeBar() === i"
                             (mouseenter)="activeBar.set(i)"
                             >
                                 <span>
-                                    {{ searchResult | titlecase }}
+                                    {{ tour.title | titlecase }}
                                 </span>
                             </button>
+                        }@empty {
+                            <span class="no-result">
+                                No result!
+                            </span>
                         }
-                    }@else {
-                        <span style="align-self: center;">
-                            {{ searchResultMsg() }}
-                        </span>
                     }
                 </div>
             </div>

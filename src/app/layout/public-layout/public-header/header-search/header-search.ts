@@ -1,83 +1,66 @@
-import { Component, computed, effect, ElementRef, inject, signal, ViewChild } from '@angular/core';
+import { Component, effect, ElementRef, inject, signal, ViewChild } from '@angular/core';
 import { SearchIcon } from "../../../../shared/icons/search-icon/search-icon";
 import { LeftArrow } from "../../../../shared/icons/arrows/left-arrow/left-arrow";
 import { CommonModule } from '@angular/common';
 import { TourService } from '../../../../core/services/tours/tour-service';
 import { HeaderService } from '../header-service';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, map, of, switchMap } from 'rxjs';
 
 
 @Component({
   selector: 'app-header-search',
-  imports: [SearchIcon, LeftArrow, CommonModule],
+  imports: [SearchIcon, LeftArrow, CommonModule, CommonModule, ReactiveFormsModule],
   templateUrl: './header-search.html',
   styleUrl: './header-search.css',
 })
 export class HeaderSearch {
 
-  inputValue = signal('');
   activeBar = signal(0);
-
-  searchIsOpen = signal<boolean>(false);
-  isSearchMatched = signal<boolean>(false);
+  isSearchOpen = signal<boolean>(false);
 
   private tourService = inject(TourService);
   private headerService = inject(HeaderService);
-  
-  tours = this.tourService.data;
   colorSwap = this.headerService.colorSwap;
 
-  tourTitles = computed(() => {
-    return this.tours()?.map((tour) => tour.title);
-  });
+  form = new FormControl<string>('');
 
+  readonly tourTitles$ = 
+  this.form.valueChanges.pipe(
+    debounceTime(500),
+    map(value => String(value).toLowerCase().trim()),
+    distinctUntilChanged(),
 
-  searchMatch = computed(() => {
-    const value = this.inputValue().toLowerCase().trim();
-    if (!value) return null;
-  
-    const filtered = this.tourTitles()?.filter(tour =>
-      tour.toLowerCase().includes(value)
-    );
-  
-    return filtered?.length ? filtered : null;
-  });
-  
-
-  searchResultMsg = computed(() => {
-    if (!this.inputValue()) {
-      return 'No recent searches';
-    }
-  
-    if (this.searchMatch() === null) {
-      return `No results for "${this.inputValue()}"`;
-    }
-  
-    return '';
-  });
-  
-
+    switchMap(searchVal => {
+      if ( searchVal === '' ) return of([]);
+      return this.tourService.getTours().pipe(
+        map(tours => tours.filter(tour => 
+          tour.title.toLowerCase().includes(searchVal)
+        ))
+      )
+    })
+  )
 
   @ViewChild('headerSearch') searchInput!: ElementRef<HTMLInputElement>;
 
   constructor() {
     effect(() => {
-      if (this.searchIsOpen()) {
-        queueMicrotask(() => {
-          this.searchInput.nativeElement.focus();
+      if (this.isSearchOpen()) {
+        queueMicrotask(() => {   
+          this.searchInput.nativeElement.focus(); // making tiny delay before element appears
         })
       }
     })
   }
 
-
   openSearch() {
-    this.searchIsOpen.set(true);
+    this.isSearchOpen.set(true);
   };
   closeSearch() {
-    this.searchIsOpen.set(false);
+    this.form.reset();
+    this.isSearchOpen.set(false);
+    this.activeBar.set(0);
   };
-  inputValueChange(event: any) {
-    const value = event.target.value;
-    this.inputValue.set(value);
-  }
+
+
 }

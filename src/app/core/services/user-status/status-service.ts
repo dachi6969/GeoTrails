@@ -1,5 +1,4 @@
 import { Injectable, signal } from '@angular/core';
-import { firstValueFrom, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

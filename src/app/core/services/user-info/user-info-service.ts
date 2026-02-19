@@ -1,12 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-
-export interface UserInfoType {  // warning! move it into separate folder/file !!
-  name: string;
-  lastname: string;
-  phone: string;
-  email: string;
-  password: string;
-}
+import { UserInfoType } from '../../models/user-info.model';
 
 @Injectable({
   providedIn: 'root',

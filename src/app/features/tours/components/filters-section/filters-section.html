@@ -1,34 +1,36 @@
 <section class="filters_section_wrap">
-    <div class="filters_section">
-        <input 
-        type="search" 
-        placeholder="Search tours..." 
-        [(ngModel)]="searchbarValue"
-        />
-
-        <filter-dropdown 
-        [options]="toursCategories()"
-        placeholder="Category"
-        (valueChange)="categoryValue($event)"
-        [maxWidth]="true"
-        />
-
-        <filter-dropdown 
-        [options]="toursDurations()"
-        placeholder="Duration"
-        (valueChange)="durationValue($event)"
-        [maxWidth]="true"
-        />
-
-        <filter-dropdown 
-        [options]="toursPrices"
-        placeholder="Price"
-        (valueChange)="priceValue($event)"
-        [maxWidth]="true"
-        />
-
-        <button (click)="filterClick()">
-            Filter
-        </button>
-    </div>
+    
+        <div class="filters_section">
+            <input 
+            type="search" 
+            placeholder="Search tours..." 
+            [(ngModel)]="searchbarValue"
+            />
+    
+            <filter-dropdown 
+            [options]="toursCategories$ | async"
+            placeholder="Category"
+            (valueChange)="setValue(categoryVal,$event)"
+            [maxWidth]="true"
+            />
+    
+            <filter-dropdown 
+            [options]="toursDurations$ | async"
+            placeholder="Duration"
+            (valueChange)="setValue(dayDurationVal,$event)"
+            [maxWidth]="true"
+            />
+    
+            <filter-dropdown 
+            [options]="toursPrices"
+            placeholder="Price"
+            (valueChange)="setValue(priceVal,$event)"
+            [maxWidth]="true"
+            />
+    
+            <button (click)="filterClick()">
+                Filter
+            </button>
+        </div>
+    
 </section>

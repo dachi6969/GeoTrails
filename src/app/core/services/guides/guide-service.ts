@@ -1,21 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, shareReplay } from 'rxjs';
-
-
-export interface Guide {
-  id: number;
-  avalible: boolean;
-  experienceYears: number;
-  languages: string [];
-  name: string;
-  lastname: string;
-  location: string;
-  rating: number;
-  pricePerDay: number;
-  specialty: string;
-  image: string;
-}
+import { BehaviorSubject } from 'rxjs';
+import { Guide } from '../../models/guide.model';
 
 @Injectable({
   providedIn: 'root',

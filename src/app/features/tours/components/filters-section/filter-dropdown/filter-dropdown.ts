@@ -7,7 +7,8 @@ import { Component, HostListener, input, output, signal } from '@angular/core';
   styleUrl: './filter-dropdown.css',
 })
 export class FilterDropdown {
-  options = input<string[]>();
+  
+  options = input<string[] | null>();
   placeholder = input('default');
   maxWidth = input<boolean>(false);
 
@@ -24,10 +25,7 @@ export class FilterDropdown {
 
   select(option: string) {
     this.selected.set(option);
-    this.valueChange.emit({
-      option: option,
-      dropDownName: this.placeholder()
-    });
+    this.valueChange.emit(option);
     this.open.set(false)
   }
 

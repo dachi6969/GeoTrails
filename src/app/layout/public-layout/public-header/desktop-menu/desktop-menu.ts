@@ -22,4 +22,10 @@ export class DesktopMenu {
   private userInfo = this.userInfoService.userInfo;
   profileNavUrl = `/profile/${(this.userInfo()?.name || '')}`
 
+  scrollToFooter() {
+    window.document.getElementById("footer")?.scrollIntoView({
+      behavior: "smooth"
+    })
+  }
+
 }

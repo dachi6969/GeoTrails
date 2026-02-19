@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { firstValueFrom, Subject } from 'rxjs';
-import { UserInfoType } from '../../../../../core/services/user-info/user-info-service';
+import { UserInfoType } from '../../../../../core/models/user-info.model';
 
 @Injectable({
   providedIn: 'root',

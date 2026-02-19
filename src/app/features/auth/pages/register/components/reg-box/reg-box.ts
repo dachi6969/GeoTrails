@@ -6,7 +6,9 @@ import { RegisterService } from '../../services/register-service';
 import { SucessfullyRegisterModal } from "./successfully-register-modal/successfully-register-modal";
 import { UnsavedChangesModal } from "./unsaved-changes-modal/unsaved-changes-modal";
 import { RouterLink } from "@angular/router";
-import { UserInfoService, UserInfoType } from '../../../../../../core/services/user-info/user-info-service';
+import { UserInfoType } from '../../../../../../core/models/user-info.model';
+import { UserInfoService } from '../../../../../../core/services/user-info/user-info-service';
+
 
 @Component({
   selector: 'reg-box',

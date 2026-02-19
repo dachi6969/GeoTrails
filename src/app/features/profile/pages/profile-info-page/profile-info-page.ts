@@ -1,10 +1,11 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { UiButton } from "../../../../shared/components/buttons/ui-button/ui-button";
 import { RouterLink } from "@angular/router";
-import { UserInfoService, UserInfoType } from '../../../../core/services/user-info/user-info-service';
+import { UserInfoService } from '../../../../core/services/user-info/user-info-service';
 import { AuthInput } from "../../../../shared/components/inputs/auth-input/auth-input";
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ValidationService } from '../../../../core/services/validators/validation-service';
+import { UserInfoType } from '../../../../core/models/user-info.model';
 
 @Component({
   selector: 'app-profile-info-page',

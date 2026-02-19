@@ -4,6 +4,7 @@ import { UserInfoType } from '../../models/user-info.model';
 @Injectable({
   providedIn: 'root',
 })
+
 export class UserInfoService {
   
   userInfo = signal<UserInfoType | null>(null);

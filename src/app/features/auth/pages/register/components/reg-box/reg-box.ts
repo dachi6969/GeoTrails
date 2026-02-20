@@ -7,7 +7,7 @@ import { SucessfullyRegisterModal } from "./successfully-register-modal/successf
 import { UnsavedChangesModal } from "./unsaved-changes-modal/unsaved-changes-modal";
 import { RouterLink } from "@angular/router";
 import { UserInfoType } from '../../../../../../core/models/user-info.model';
-import { UserInfoService } from '../../../../../../core/services/user-info/user-info-service';
+
 
 
 @Component({
@@ -29,9 +29,6 @@ export class RegBox {
   
   registerService = inject(RegisterService);
   isRegistered = this.registerService.isInfoSaved;
-
-  userInfoService = inject(UserInfoService);
-  userInfo = this.userInfoService.userInfo;
 
     // *** forms section ***
   form = new FormGroup({
@@ -79,28 +76,27 @@ export class RegBox {
     this.form.markAllAsTouched();
     this.form.markAllAsDirty();
 
-        // *** actions if pass and confirm match or not ***
-      if ( this.form.valid && !this.isPasswordMismatch() ) {
+    if ( this.form.invalid && this.isPasswordMismatch() ) return;
         
         // *** user's new regist data ***
-          const userNewInfo = this.form.getRawValue();
+    const userNewInfo = this.form.getRawValue();
 
-          const anyInfoMatcher = 
-          this.registerService
-          .hasAnyEqualValue(userNewInfo, this.userInfo()); // passing new data and existed one!
+    const anyInfoMatcher = this.registerService
+    .hasAnyEqualValue(userNewInfo as UserInfoType); // passing new data and existed one!
 
-            // *** setting up new error in case of duplicate data ***
-          if ( anyInfoMatcher.match ) {
-            const control = this.form.get(`${anyInfoMatcher.key}`);
+    // *** setting up new error in case of duplicate data ***
+    if ( anyInfoMatcher.match ) {
+      const control = this.form.get(`${anyInfoMatcher.key}`);
 
-            control?.setErrors({
-              infoMatched: {
-                fieldName: anyInfoMatcher.key
-              }
-            })
-          }
-          
-          this.registerService.saveInfo(userNewInfo as UserInfoType); 
+      control?.setErrors({
+        infoMatched: {
+        fieldName: anyInfoMatcher.key
         }
+      })
+      return;
+    }
+          
+      this.registerService.saveInfo(userNewInfo as UserInfoType); 
+      
   };
 }

@@ -33,36 +33,36 @@ export class LoginBox {
       this.validationService.passwordValidation
     ])
   },{
-    updateOn: 'blur'
+    updateOn: 'submit'
   });
 
   get loginInfo() {
-    return {
-      email: this.form.controls.email.value,
-      password: this.form.controls.password.value
-    }
+    return this.form.getRawValue();
+  }
+
+  isCorrectInfo (): boolean {
+    return this.loginAuthService
+    .compareFields(
+      this.loginInfo.email, 
+      this.loginInfo.password
+      );
   }
 
   onSubmit() {
     this.form.markAllAsTouched();
-    this.form.markAllAsDirty();
-
+    
     if ( !this.form.valid ) return;
-    if ( !this.userInfo() ) {
-      return this.form.setErrors({ invalidLogin: true });
-    }
-      
-      const isCorrectInfo =  // comparing current values and existed user info
-      this.loginAuthService.compareFields(this.loginInfo.email, this.loginInfo.password);
-      
-      if (isCorrectInfo) {
-        this.statusService.isLoggedIn.set(true);
-        sessionStorage.setItem('userStatus', 'true');
-        this.router.navigate(['profile', `${this.userInfo()?.name}`])
-      }
-      else{
-        this.form.setErrors({ invalidLogin: true });
-      }
+
+    const user = this.userInfo();
+    console.log(user)
+
+    if ( !user || !this.isCorrectInfo() ) {
+      this.form.setErrors({ invalidLogin: true });
+      return;
+    };
+ 
+    this.statusService.login();
+    this.router.navigate(['profile', user.name]);
   }
 
 }

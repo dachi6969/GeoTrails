@@ -1,6 +1,7 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { firstValueFrom, Subject } from 'rxjs';
 import { UserInfoType } from '../../../../../core/models/user-info.model';
+import { UserInfoService } from '../../../../../core/services/user-info/user-info-service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,9 @@ export class RegisterService {
   isUnsavedModalOpen = signal<boolean>(false);
 
   resolver = new Subject<boolean>();
+
+  private userInfoService = inject(UserInfoService);
+  readonly userInfo = this.userInfoService.userInfo;
 
   async confirm(){
     this.openUnsavedModal();
@@ -42,17 +46,19 @@ export class RegisterService {
   }
 
     // compare existed user data and new registration data 
-  hasAnyEqualValue(obj1: any, obj2: any) {
+  hasAnyEqualValue(obj1: UserInfoType) {
 
-    if (obj1 === null || obj2 === null ) return { match: false, key: null }; 
+    const userInf = this.userInfo();
 
-    const skipKeys = ['name', 'lastname', 'password']; // skipping check process in case of those inputs
+    if (obj1 === null || userInf === null ) return { match: false, key: null }; 
+
+    const skipKeys = ['name', 'lastname', 'password', 'confirm']; // skipping check process in case of those inputs
   
-    for (const key of Object.keys(obj1)) {
+    for (const key of Object.keys(obj1) as (keyof UserInfoType)[]) {
       if (skipKeys.includes(key)) continue; 
   
       const v1 = String(obj1[key] ?? '').trim().toLowerCase();
-      const v2 = String(obj2[key] ?? '').trim().toLowerCase();
+      const v2 = String(userInf[key] ?? '').trim().toLowerCase();
   
       if (v1 && v1 === v2) {
         return { match: true, key };
@@ -65,6 +71,7 @@ export class RegisterService {
   
   saveInfo(registrationInfo: UserInfoType) {
     this.isUserInfoSaved.set(true);
+    this.userInfoService.userInfo.set(registrationInfo);
     
     localStorage
     .setItem('userInfo', JSON.stringify(registrationInfo));

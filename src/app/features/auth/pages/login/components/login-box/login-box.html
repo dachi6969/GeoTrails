@@ -1,26 +1,26 @@
 <form class="auth-form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="field">
-    <label>Email</label>
-      <auth-input 
-      placeHolder="Enter your email"
-      typeAs="email"
-      formControlName="email" 
-      />
-      @if ( form.hasError('invalidLogin') ) {
-        <small>Invalid email or password. Please try again.</small>
-      }
+      <label>Email</label>
+        <auth-input 
+        placeHolder="Enter your email"
+        typeAs="email"
+        formControlName="email" 
+        />
+        @if ( form.hasError('invalidLogin') ) {
+          <small>Invalid email or password. Please try again.</small>
+        }
     </div>
   
     <div class="field">
-    <label>Password</label>
-      <auth-input 
-      placeHolder="Enter your password"
-      typeAs="password"
-      formControlName="password" 
-      />
-      @if ( form.hasError('invalidLogin') ) {
-        <small>Invalid email or password. Please try again.</small>
-      }
+      <label>Password</label>
+        <auth-input 
+        placeHolder="Enter your password"
+        typeAs="password"
+        formControlName="password" 
+        />
+        @if ( form.hasError('invalidLogin') ) {
+          <small>Invalid email or password. Please try again.</small>
+        }
     </div>
     <a>
       Forget password?

@@ -13,6 +13,11 @@ export class StatusService {
     this.isLoggedIn.set(status);
   }
 
+  login() {
+    this.isLoggedIn.set(true);
+    sessionStorage.setItem('userStatus', 'true');
+  }
+
   confirm (): boolean {
     this.isModalOpen.set(true);
     return false;

@@ -76,7 +76,8 @@ export class RegBox {
     this.form.markAllAsTouched();
     this.form.markAllAsDirty();
 
-    if ( this.form.invalid && this.isPasswordMismatch() ) return;
+    if ( this.form.invalid ) return;
+    if ( this.isPasswordMismatch() ) return;
         
         // *** user's new regist data ***
     const userNewInfo = this.form.getRawValue();

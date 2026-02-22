@@ -12,6 +12,9 @@ import { ProfileSettingsPage } from './features/profile/pages/profile-settings-p
 import { ProfileBookingsPage } from './features/profile/pages/profile-bookings-page/profile-bookings-page';
 import { canActiveGuard } from './features/profile/guards/can-active-guard';
 import { GuidesPage } from './features/guides/pages/guides-page/guides-page';
+import { SelectedTourPage } from './features/tours/pages/selected-tour-page/selected-tour-page';
+import { canEnterGuard } from './features/tours/guards/can-enter-guard';
+import { NotFoundPage } from './features/not-found/pages/not-found-page/not-found-page';
 
 export const routes: Routes = [
     { 
@@ -20,7 +23,15 @@ export const routes: Routes = [
         children: [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomePage },
-            { path: 'tours', component: ToursPage },
+            { path: 'tours', children: [
+                { path: '', component: ToursPage },
+                { 
+                path: ':title', 
+                component: SelectedTourPage, 
+                data: { title: 'current tour', showHeader: false },
+                canActivate: [canEnterGuard]
+                }
+            ] },
             { path: 'guides', component: GuidesPage }
         ]
     },
@@ -42,11 +53,11 @@ export const routes: Routes = [
             { path: 'info', component: ProfileInfoPage },
             { path: 'settings', component: ProfileSettingsPage },
             { path: 'bookings', component: ProfileBookingsPage}
-            // { path: '' }
         ]
     }, // !CanActive + CanDeactive will be added later!
 
 
+    { path: 'not-found', component: NotFoundPage },
     { path: '**', redirectTo: 'home' } // always keep last!
 ];
 

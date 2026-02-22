@@ -6,6 +6,7 @@ import { TourService } from '../../../../core/services/tours/tour-service';
 import { HeaderService } from '../header-service';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, map, of, switchMap } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class HeaderSearch {
   isSearchOpen = signal<boolean>(false);
 
   private tourService = inject(TourService);
+  private router = inject(Router);
   private headerService = inject(HeaderService);
   colorSwap = this.headerService.colorSwap;
 
@@ -61,6 +63,11 @@ export class HeaderSearch {
     this.isSearchOpen.set(false);
     this.activeBar.set(0);
   };
+
+  navToCurrentTour(tourTitle: string): void {
+    this.closeSearch();
+    this.router.navigate(['/tours', tourTitle]);
+  }
 
 
 }

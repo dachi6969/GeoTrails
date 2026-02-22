@@ -30,9 +30,11 @@
                 <div class="search_result_wrap">
                     @if ( tourTitles$ | async; as tourTitles ) {
                             @for ( tour of tourTitles; let i = $index; track i ) {
-                            <button class="search_result" 
+                            <button 
+                            class="search_result" 
                             [class.active]="activeBar() === i"
                             (mouseenter)="activeBar.set(i)"
+                            (click)="navToCurrentTour(tour.title)"
                             >
                                 <span>
                                     {{ tour.title | titlecase }}

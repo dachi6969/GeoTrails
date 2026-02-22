@@ -2,12 +2,14 @@ import { Component, inject, OnDestroy } from '@angular/core';
 import { TourService } from '../../../../core/services/tours/tour-service';
 import { ToursFilterService } from '../../services/tours-filter-service';
 import { CommonModule } from '@angular/common';
-import { combineLatest, debounceTime, distinctUntilChanged, map } from 'rxjs';
+import { combineLatest, distinctUntilChanged, map } from 'rxjs';
 import { toObservable } from '@angular/core/rxjs-interop';
+import { UiButton } from "../../../../shared/components/buttons/ui-button/ui-button";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cards-section',
-  imports: [CommonModule],
+  imports: [CommonModule, UiButton],
   templateUrl: './cards-section.html',
   styleUrl: './cards-section.css',
 })
@@ -17,7 +19,8 @@ export class CardsSection implements OnDestroy {
   searchBarValue = this.toursFilterService.searchValue;
   filteredCategory = this.toursFilterService.filtered;
   
-  tourService = inject(TourService);
+  private tourService = inject(TourService);
+  private router = inject(Router);
 
   readonly tours$ =
   this.tourService.getTours();
@@ -28,13 +31,12 @@ export class CardsSection implements OnDestroy {
     toObservable(this.filteredCategory),
     toObservable(this.searchBarValue)
     .pipe(
-      debounceTime(300),
+      map(searched => searched.toLocaleLowerCase().trim()),
       distinctUntilChanged()
     )
   ]).pipe(
     map(([tours,filters,searchVal]) => {
       const { category, dayDuration, price } = filters;
-      const searched = searchVal.toLowerCase().trim();
       const [ minPrice, maxPrice ] = price.split(' - ').map(Number);
 
       return tours.filter(tour => {
@@ -48,7 +50,7 @@ export class CardsSection implements OnDestroy {
         !price || (tour.price >= minPrice && tour.price <= maxPrice);
 
         const searchFilter = 
-        !searched || tour.title.toLowerCase().includes(searched);
+        !searchVal || tour.title.toLowerCase().includes(searchVal);
 
         return selectedCategory && selectedDayDuration && selectedPrice && searchFilter
       })
@@ -57,6 +59,10 @@ export class CardsSection implements OnDestroy {
 
   ngOnDestroy(): void {
     this.toursFilterService.resetFilter();
+  }
+
+  navToCurrentTour(tourName: string): void {
+    this.router.navigate(['tours', tourName]);
   }
 
 }

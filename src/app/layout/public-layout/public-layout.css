@@ -1,9 +1,1 @@
-.main_wrap{
-    margin-top: 65px;
-}
 
-@media (min-width: 768px) {
-    .main_wrap{
-        margin-top: 0;
-    }
-}

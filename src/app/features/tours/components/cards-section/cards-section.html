@@ -14,6 +14,13 @@
                                 {{ tour.dayDuration }}days | {{ tour.title }}
                             </p>
                             <span>{{ tour.price }}Gel</span>
+                            <ui-button
+                            variant="filled"
+                            color="dark"
+                            (onClick)="navToCurrentTour(tour.title)"
+                            >
+                                View
+                            </ui-button>
                         </div>
                     
                     </div>

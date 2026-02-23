@@ -1,6 +1,6 @@
 .hero_content{
     width: 100%;
-    min-height: 30vh;
+    min-height: 320px;
     position: relative;
 
     background-image: url('/tours_page_hero.jpg');

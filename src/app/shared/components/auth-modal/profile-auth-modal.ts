@@ -5,19 +5,28 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-global-canactive-modal',
   imports: [],
-  templateUrl: './global-canactive-modal.html',
-  styleUrl: './global-canactive-modal.css',
+  templateUrl: './profile-auth-modal.html',
+  styleUrl: './profile-auth-modal.css',
 })
 export class GlobalCanactiveModal {
 
-  statusService = inject(StatusService);
-  router = inject(Router);
+  private statusService = inject(StatusService);
+  isModalOpen = this.statusService.isModalOpen;
+  isRegistered = this.statusService.isRegistered;
+
+  private router = inject(Router);
 
   close() {
     this.statusService.closeModal();
-  }
+  };
+
   navToLoginPage() {
-    this.statusService.closeModal();
+    this.close();
     this.router.navigate(['/auth/login']);
-  }
+  };
+
+  navToRegisterPage(): void {
+    this.close();
+    this.router.navigate(['/auth/register']);
+  };
 }

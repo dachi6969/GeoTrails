@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { GlobalCanactiveModal } from "./shared/components/global-canactive-modal/global-canactive-modal";
+import { GlobalCanactiveModal } from "./shared/components/auth-modal/profile-auth-modal";
 
 @Component({
   selector: 'app-root',

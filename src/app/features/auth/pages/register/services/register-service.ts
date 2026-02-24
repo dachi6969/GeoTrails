@@ -2,6 +2,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { firstValueFrom, Subject } from 'rxjs';
 import { UserInfoType } from '../../../../../core/models/user-info.model';
 import { UserInfoService } from '../../../../../core/services/user-info/user-info-service';
+import { StatusService } from '../../../../../core/services/user-status/status-service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +16,8 @@ export class RegisterService {
 
   private userInfoService = inject(UserInfoService);
   readonly userInfo = this.userInfoService.userInfo;
+
+  private userStatusService = inject(StatusService);
 
   async confirm(){
     this.openUnsavedModal();
@@ -72,6 +75,7 @@ export class RegisterService {
   saveInfo(registrationInfo: UserInfoType) {
     this.isUserInfoSaved.set(true);
     this.userInfoService.userInfo.set(registrationInfo);
+    this.userStatusService.register();
     
     localStorage
     .setItem('userInfo', JSON.stringify(registrationInfo));

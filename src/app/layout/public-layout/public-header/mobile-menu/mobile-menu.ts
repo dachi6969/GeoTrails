@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MenuSidebar } from "./menu-sidebar/menu-sidebar";
 import { HeaderService } from '../header-service';
 import { UserInfoService } from '../../../../core/services/user-info/user-info-service';
+import { StatusService } from '../../../../core/services/user-status/status-service';
 
 @Component({
   selector: 'app-mobile-menu',
@@ -16,11 +17,16 @@ export class MobileMenu {
 
   isMenuOpen = signal<boolean>(false);
 
-  private router = inject(Router);
   private headerService = inject(HeaderService);
-
+  
   private userInfoService = inject(UserInfoService);
   private userInfo = this.userInfoService.userInfo;
+  
+  private statusService = inject(StatusService);
+  private isRegistered = this.statusService.isRegistered;
+  private isLoggedIn = this.statusService.isLoggedIn;
+  
+  private router = inject(Router);
 
   colorSwap = this.headerService.colorSwap;
 
@@ -31,8 +37,15 @@ export class MobileMenu {
     this.isMenuOpen.set(false);
   };
 
-  navToProfilePage() {
-    this.router.navigate(['profile', `${this.userInfo()?.name}`]);
+  navToProfilePage(): void {
+    if ( !this.isRegistered() || !this.isLoggedIn() ) {
+      this.statusService.openModal();
+      return;
+    }
+
+    const userName = this.userInfo()?.name;
+
+    this.router.navigate(['/profile', userName])
   }
 
 }

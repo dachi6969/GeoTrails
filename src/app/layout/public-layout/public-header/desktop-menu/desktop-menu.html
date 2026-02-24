@@ -1,9 +1,9 @@
 <nav class="desktop_menu">
-    <a class="menu_item" [routerLink]="profileNavUrl">
+    <button class="menu_item" (click)="navToProfilePage()">
         <ui-typography [color]="colorSwap()"> 
             Profile
         </ui-typography>
-    </a>
+    </button>
     <a class="menu_item" routerLink="/tours">   
             <ui-typography
             [color]="colorSwap()"

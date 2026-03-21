@@ -31,9 +31,9 @@
                 }
         }
         @else{
-            <div class="spinner-backdrop">
-                <div class="spinner"></div>
-            </div>
+            @for ( i of [1,2,3]; track i ) {
+                <div class="skeleton"></div>
+            }
         }
 
     </div>

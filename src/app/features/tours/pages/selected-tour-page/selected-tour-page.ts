@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from "@angular/common";
-import { ActivatedRoute, Router } from '@angular/router';
-import { filter, map, switchMap, tap } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { map, switchMap } from 'rxjs';
 import { TourService } from '../../../../core/services/tours/tour-service';
 import { UiButton } from "../../../../shared/components/buttons/ui-button/ui-button";
 

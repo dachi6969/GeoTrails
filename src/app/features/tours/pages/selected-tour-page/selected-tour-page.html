@@ -1,49 +1,69 @@
 <main class="selected_tour_page_wrap">
 
-    @if ( currentTour$ | async; as currentTour ) {
-        @for ( tour of currentTour; track tour.id ) {
-            <section class="selected_tour-hero">
-  
-                <div class="hero-image">
-                  <img 
-                    [ngSrc]="tour.images.card" 
-                    alt="Svaneti tour"
-                    width="640"
-                    height="427"
-                    priority
-                    >
-                </div>
-            
-                <div class="hero-content">
-                  <h1>{{ tour.title }} Adventure</h1>
-                  <p class="location">📍 Georgia, {{ tour.title }}</p>
-            
-                  <p class="description">
-                    {{ tour.description }}
-                  </p>
-            
-                  <div class="tour-meta">
-                    <div>🕒 {{ tour.dayDuration }} Days</div>
-                    <div>👥 Visitors: {{ tour.visitorsCount }}</div>
-                    <div>💰 {{ tour.price }}Gel</div>
-                  </div>
-            
-                <ui-button 
-                variant="filled"
-                color="dark"
-                size="big"
-                >
-                    Book Now
-                </ui-button>
+  @if (currentTour$ | async; as currentTour) {
+    @for (tour of currentTour; track tour.id) {
+      <section class="selected_tour-hero">
 
-                </div>
-            
-              </section>
-        }
-    }@else {
-      <div class="spinner-backdrop">
-        <div class="spinner"></div>
-       </div>
+        <div class="hero-image">
+          <img 
+            [ngSrc]="tour.images.card" 
+            alt="Svaneti tour"
+            width="640"
+            height="427"
+            priority
+          >
+        </div>
+
+        <div class="hero-content">
+          <h1>{{ tour.title }} Adventure</h1>
+          <p class="location">📍 Georgia, {{ tour.title }}</p>
+
+          <p class="description">
+            {{ tour.description }}
+          </p>
+
+          <div class="tour-meta">
+            <div>🕒 {{ tour.dayDuration }} Days</div>
+            <div>👥 Visitors: {{ tour.visitorsCount }}</div>
+            <div>💰 {{ tour.price }} Gel</div>
+          </div>
+
+          <ui-button variant="filled" color="dark" size="big">
+            Book Now
+          </ui-button>
+        </div>
+
+      </section>
     }
-    
-  </main>
+  } @else {
+
+    <section class="selected_tour-hero skeleton-wrapper">
+
+      <!-- image skeleton -->
+      <div class="hero-image">
+        <div class="skeleton skeleton-image"></div>
+      </div>
+
+      <!-- content skeleton -->
+      <div class="hero-content">
+        <div class="skeleton skeleton-title"></div>
+        <div class="skeleton skeleton-text short"></div>
+
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-text"></div>
+
+        <div class="tour-meta">
+          <div class="skeleton skeleton-meta"></div>
+          <div class="skeleton skeleton-meta"></div>
+          <div class="skeleton skeleton-meta"></div>
+        </div>
+
+        <div class="skeleton skeleton-button"></div>
+      </div>
+
+    </section>
+
+  }
+
+</main>

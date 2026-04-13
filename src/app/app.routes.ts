@@ -39,7 +39,7 @@ export const routes: Routes = [
         path: 'auth', 
         component: AuthLayout,
         children: [
-            { path: '', redirectTo: 'logic', pathMatch: 'full' },
+            { path: '', redirectTo: 'login', pathMatch: 'full' },
             { path: 'login', component: LoginPage },
             { path: 'register', component: RegisterPage, canDeactivate: [unsavedLeaveGuard] }
         ]
